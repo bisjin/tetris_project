@@ -17,55 +17,59 @@
 
 
 import UIKit
+import SwiftUI
 import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    // 画面の横幅を取得
+      //var screenWidth:CGFloat!
+      //var screenHeight:CGFloat!
+    @IBOutlet weak var brock: UIView!
+    
+   //var timer:Timer = Timer()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
-        // including entities and graphs.
-        if let scene = GKScene(fileNamed: "GameScene") {
-            
-            // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
-                
-                // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
-                
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
-                
-                // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                    view.showsFPS = true
-                    view.showsNodeCount = true
-                }
-            }
+             // 画面の横幅を取得
+            //screenWidth = view.frame.size.width
+            //screenHeight = view.frame.size.height
+       
+ Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+ }
+
+ @objc func gravity() {
+    if(brock.frame.origin.y < 180){
+    brock.frame.origin.y += 10
+    }
+ }
+    
+    
+    
+    @IBAction func left(_ sender: Any) {
+        if(brock.frame.origin.x > 40
+            && brock.frame.origin.y < 180){
+        brock.frame.origin.x -= 40
         }
+        print("afterRect: \(brock.frame)")
     }
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
+    
+    @IBAction func right(_ sender: Any) {
+        if(brock.frame.origin.x < 320 && brock.frame.origin.y < 180){
+        brock.frame.origin.x += 40
         }
+        print("afterRect: \(brock.frame)")
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
+    @IBAction func under(_ sender: Any) {
+        if(brock.frame.origin.y < 180){
+        brock.frame.origin.y = 180
+        }
+        print("afterRect: \(brock.frame)")
     }
+    
+    //@IBAction func leftturn(_ sender: Any) {}
+    
+    //@IBAction func rightturn(_ sender: Any) {}
+    
 }
+
