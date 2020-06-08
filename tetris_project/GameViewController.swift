@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
     // 画面の横幅を取得
       //var screenWidth:CGFloat!
       //var screenHeight:CGFloat!
-    @IBOutlet weak var brock: UIView!
+   // @IBOutlet weak var brock: UIView!
     
    //var timer:Timer = Timer()
     override func viewDidLoad() {
@@ -34,13 +34,14 @@ class GameViewController: UIViewController {
              // 画面の横幅を取得
             //screenWidth = view.frame.size.width
             //screenHeight = view.frame.size.height
+       
         //ブロックを生成
-        /*if(brock.frame.origin.y == 180){
-            let TestView = UIView.init(frame: CGRect.init(x: 40, y: 180, width: 40, height: 100))
+        //if(brock.frame.origin.y == 180){
+            let brock = UIView.init(frame: CGRect.init(x: 40, y: 180, width: 40, height: 100))
             let bgColor = UIColor.blue
-            TestView.backgroundColor = bgColor
-            self.view.addSubview(TestView)
-        }*/
+            brock.backgroundColor = bgColor
+            self.view.addSubview(brock)
+        //}
 //時間
  Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
  }
