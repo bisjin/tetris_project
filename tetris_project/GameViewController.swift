@@ -34,10 +34,17 @@ class GameViewController: UIViewController {
              // 画面の横幅を取得
             //screenWidth = view.frame.size.width
             //screenHeight = view.frame.size.height
-       
+        //ブロックを生成
+        /*if(brock.frame.origin.y == 180){
+            let TestView = UIView.init(frame: CGRect.init(x: 40, y: 180, width: 40, height: 100))
+            let bgColor = UIColor.blue
+            TestView.backgroundColor = bgColor
+            self.view.addSubview(TestView)
+        }*/
+//時間
  Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
  }
-
+//重力
  @objc func gravity() {
     if(brock.frame.origin.y < 180){
     brock.frame.origin.y += 10
@@ -45,7 +52,7 @@ class GameViewController: UIViewController {
  }
     
     
-    
+    //左ボタン
     @IBAction func left(_ sender: Any) {
         if(brock.frame.origin.x > 40
             && brock.frame.origin.y < 180){
@@ -53,13 +60,14 @@ class GameViewController: UIViewController {
         }
         print("afterRect: \(brock.frame)")
     }
-    
+    //右ボタン
     @IBAction func right(_ sender: Any) {
         if(brock.frame.origin.x < 320 && brock.frame.origin.y < 180){
         brock.frame.origin.x += 40
         }
         print("afterRect: \(brock.frame)")
     }
+    //下ボタン
     @IBAction func under(_ sender: Any) {
         if(brock.frame.origin.y < 180){
         brock.frame.origin.y = 180
