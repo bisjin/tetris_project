@@ -187,11 +187,6 @@
                                     <action selector="right:" destination="JX4-qD-02l" eventType="touchUpInside" id="YzB-9u-6Dr"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JWN-ah-tI2">
-                                <rect key="frame" x="200" y="50" width="40" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtE-oU-mLV">
                                 <rect key="frame" x="141" y="479" width="132" height="99"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -243,15 +238,17 @@
                                     <action selector="leftturn:" destination="JX4-qD-02l" eventType="touchUpInside" id="kdt-8b-y5j"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zl5-Lp-PN1">
+                                <rect key="frame" x="183" y="52" width="40" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hdd-nI-Y3l"/>
                     </view>
                     <navigationItem key="navigationItem" id="s3D-Pb-1pv"/>
                     <size key="freeformSize" width="414" height="896"/>
-                    <connections>
-                        <outlet property="brock" destination="JWN-ah-tI2" id="C04-jx-8Hd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l01-yN-OFf" sceneMemberID="firstResponder"/>
             </objects>

@@ -22,12 +22,24 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    var brock : UIView!
     // 画面の横幅を取得
       //var screenWidth:CGFloat!
       //var screenHeight:CGFloat!
    // @IBOutlet weak var brock: UIView!
     
    //var timer:Timer = Timer()
+    
+    //a[3][3]={0 1 0 0
+    //         0 1 0 0
+    //         0 1 0 0
+    //         0 1 0 0}
+    
+    //a2[3][3]={0 0 0 0
+    //          0 0 0 0
+    //          1 1 1 1
+    //          0 0 0 0}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,14 +49,24 @@ class GameViewController: UIViewController {
        
         //ブロックを生成
         //if(brock.frame.origin.y == 180){
-            let brock = UIView.init(frame: CGRect.init(x: 40, y: 180, width: 40, height: 100))
-            let bgColor = UIColor.blue
-            brock.backgroundColor = bgColor
-            self.view.addSubview(brock)
+            brock_create()
         //}
 //時間
  Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
  }
+//ブロック生成
+    @objc func brock_create(){
+        //let brock = UIView.init(frame: CGRect(x: 180 ,y: 50, width: 40, height: 100))
+    //let bgColor = UIColor.blue
+    //brock.backgroundColor = bgColor
+    //self.view.addSubview(brock)
+        
+        brock = UIView(frame: CGRect(x:180, y:50, width:40, height:100))
+        let bgColor = UIColor.blue
+        brock.backgroundColor = bgColor
+        self.view.addSubview(brock)
+    }
+    
 //重力
  @objc func gravity() {
     if(brock.frame.origin.y < 180){
@@ -80,5 +102,5 @@ class GameViewController: UIViewController {
     
     //@IBAction func rightturn(_ sender: Any) {}
     
-}
 
+}
