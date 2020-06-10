@@ -199,18 +199,13 @@
                                     <action selector="under:" destination="JX4-qD-02l" eventType="touchUpInside" id="Gli-jt-uur"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I3A-Hg-8gI">
-                                <rect key="frame" x="360" y="50" width="20" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7tv-Kq-uHo">
                                 <rect key="frame" x="20" y="50" width="20" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dT8-8y-fUL">
-                                <rect key="frame" x="20" y="280" width="355" height="20"/>
+                                <rect key="frame" x="20" y="280" width="340" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
@@ -238,6 +233,11 @@
                                     <action selector="leftturn:" destination="JX4-qD-02l" eventType="touchUpInside" id="kdt-8b-y5j"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I3A-Hg-8gI">
+                                <rect key="frame" x="340" y="50" width="20" height="250"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hdd-nI-Y3l"/>
