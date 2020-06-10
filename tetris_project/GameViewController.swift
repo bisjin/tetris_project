@@ -28,6 +28,10 @@ class GameViewController: UIViewController {
     var finish:Bool = false
     //test用の変数
     var counter:Int = 0
+    //test用の変数2
+    var counter2:Int = 0
+    //ステージ上のマス目
+    var masume : [[Int]] = [[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]]
     
     //struct brock_struct {
     //    let flg = 0
@@ -92,7 +96,7 @@ class GameViewController: UIViewController {
     
 //ブロック生成
     @objc func brock_create(){
-        brock = UIView(frame: CGRect(x:160, y:50, width:30, height:30))
+        brock = UIView(frame: CGRect(x:192, y:40, width:30, height:30))
         let bgColor = UIColor.blue
         brock.backgroundColor = bgColor
         // 枠線の色
@@ -112,33 +116,41 @@ class GameViewController: UIViewController {
     
 //重力
  @objc func gravity() {
-    if(brock.frame.origin.y < 250){
-    brock.frame.origin.y += 10
+    
+    counter2 += 1
+    print(counter2)
+    if(brock.frame.origin.y < 630){
+    brock.frame.origin.y += 30
+    }
+    if(counter2%21==0){
+        brock_create()
     }
  }
     
     
     //左ボタン
     @IBAction func left(_ sender: Any) {
-        if(brock.frame.origin.x > 40
-            && brock.frame.origin.y < 250){
+        if(brock.frame.origin.x > 12
+            && brock.frame.origin.y < 640){
         brock.frame.origin.x -= 30
         }
         print("afterRect: \(brock.frame)")
     }
     //右ボタン
     @IBAction func right(_ sender: Any) {
-        if(brock.frame.origin.x < 310 && brock.frame.origin.y < 250){
+        if(brock.frame.origin.x < 372 && brock.frame.origin.y < 640){
         brock.frame.origin.x += 30
         }
         print("afterRect: \(brock.frame)")
     }
     //下ボタン
     @IBAction func under(_ sender: Any) {
-        if(brock.frame.origin.y < 250){
-        brock.frame.origin.y = 250
+        if(brock.frame.origin.y < 640){
+        brock.frame.origin.y = 640
         }
         print("afterRect: \(brock.frame)")
+        counter2 = 0
+        brock_create()
     }
     
     //@IBAction func leftturn(_ sender: Any) {}
