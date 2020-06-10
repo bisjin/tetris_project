@@ -74,7 +74,8 @@ class GameViewController: UIViewController {
        
         //ブロックを生成
         //生成の基本関数
-        brock_create()
+        let brock_Value = Int.random(in: 0 ... 7)
+        brock_create(brock_Value: brock_Value)
         /*repeat{
             switch counter {
             case 0:
@@ -96,10 +97,40 @@ class GameViewController: UIViewController {
     }
     
 //ブロック生成
-    @objc func brock_create(){
-        brock = UIView(frame: CGRect(x:192, y:40, width:30, height:30))
+    @objc func brock_create(brock_Value:Int){
+          brock = UIView(frame: CGRect(x:192, y:40, width:30, height:30))
+        if(brock_Value == 0){
         let bgColor = UIColor.blue
         brock.backgroundColor = bgColor
+        }
+        if(brock_Value == 1){
+        let bgColor = UIColor.red
+        brock.backgroundColor = bgColor
+        }
+        if(brock_Value == 2){
+        let bgColor = UIColor.green
+        brock.backgroundColor = bgColor
+        }
+        if(brock_Value == 3){
+        let bgColor = UIColor.yellow
+        brock.backgroundColor = bgColor
+        }
+        if(brock_Value == 4){
+        let bgColor = UIColor.orange
+        brock.backgroundColor = bgColor
+        }
+        if(brock_Value == 5){
+        let bgColor = UIColor.purple
+        brock.backgroundColor = bgColor
+        }
+        if(brock_Value == 6){
+        let bgColor = UIColor.magenta
+        brock.backgroundColor = bgColor
+        }
+        if(brock_Value == 7){
+        let bgColor = UIColor.cyan
+        brock.backgroundColor = bgColor
+        }
         // 枠線の色
         brock.layer.borderColor = UIColor.black.cgColor
         // 枠線の太さ
@@ -124,7 +155,8 @@ class GameViewController: UIViewController {
     brock.frame.origin.y += 30
     }
     if(counter2%21==0){
-        brock_create()
+        let brock_Value = Int.random(in: 0 ... 7)
+        brock_create(brock_Value: brock_Value)
     }
  }
     
@@ -151,7 +183,8 @@ class GameViewController: UIViewController {
         }
         print("afterRect: \(brock.frame)")
         counter2 = 0
-        brock_create()
+        let brock_Value = Int.random(in: 0 ... 7)
+        brock_create(brock_Value: brock_Value)
     }
     
     //@IBAction func leftturn(_ sender: Any) {}
