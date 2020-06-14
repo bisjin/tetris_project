@@ -17,6 +17,8 @@
 		5487A212247CE63600563826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5487A210247CE63600563826 /* LaunchScreen.storyboard */; };
 		5487A21D247CE63800563826 /* tetris_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5487A21C247CE63800563826 /* tetris_projectTests.swift */; };
 		5487A228247CE63900563826 /* tetris_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5487A227247CE63900563826 /* tetris_projectUITests.swift */; };
+		67962CAD249519B0005616BB /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67962CAC249519B0005616BB /* ModalViewController.swift */; };
+		67962CAF2495BF24005616BB /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67962CAE2495BF24005616BB /* EndViewController.swift */; };
 		67A10A44248B7AD00091365F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A10A43248B7AD00091365F /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		5487A223247CE63900563826 /* tetris_projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tetris_projectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5487A227247CE63900563826 /* tetris_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tetris_projectUITests.swift; sourceTree = "<group>"; };
 		5487A229247CE63900563826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67962CAC249519B0005616BB /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		67962CAE2495BF24005616BB /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
 		67A10A43248B7AD00091365F /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +116,8 @@
 				5487A209247CE63000563826 /* GameViewController.swift */,
 				5487A20B247CE63000563826 /* Main.storyboard */,
 				67A10A43248B7AD00091365F /* StartViewController.swift */,
+				67962CAE2495BF24005616BB /* EndViewController.swift */,
+				67962CAC249519B0005616BB /* ModalViewController.swift */,
 				5487A20E247CE63600563826 /* Assets.xcassets */,
 				5487A210247CE63600563826 /* LaunchScreen.storyboard */,
 				5487A213247CE63600563826 /* Info.plist */,
@@ -199,6 +205,9 @@
 		5487A1F6247CE63000563826 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					1,
+				);
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = IOSapplication_time;
@@ -270,7 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67962CAF2495BF24005616BB /* EndViewController.swift in Sources */,
 				5487A208247CE63000563826 /* GameScene.swift in Sources */,
+				67962CAD249519B0005616BB /* ModalViewController.swift in Sources */,
 				67A10A44248B7AD00091365F /* StartViewController.swift in Sources */,
 				5487A20A247CE63000563826 /* GameViewController.swift in Sources */,
 				5487A202247CE63000563826 /* AppDelegate.swift in Sources */,

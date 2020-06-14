@@ -16,8 +16,9 @@ class StartViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    @IBAction func tapStart(_ sender: Any) {
+   
+    
+    @IBAction func tapStart(_ sender: Any){
         self.performSegue(withIdentifier: "moveGame", sender: self)
     }//ゲーム画面へ移動
     

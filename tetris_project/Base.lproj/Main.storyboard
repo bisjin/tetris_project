@@ -92,41 +92,72 @@
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="StartViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTf-7C-t5J">
-                                <rect key="frame" x="146" y="474" width="122" height="48"/>
+                                <rect key="frame" x="82" y="446" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QP6-HY-h2Y"/>
+                                    <constraint firstAttribute="width" constant="250" id="cxM-yX-e21"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="スタート">
-                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="ス タ ー ト">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="tapStart:" destination="BV1-FR-VrT" eventType="touchUpInside" id="mfs-Ae-u5j"/>
+                                    <action selector="tapStart:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ULp-vt-fay"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyG-Sd-PZc">
-                                <rect key="frame" x="161.5" y="544" width="91" height="48"/>
+                                <rect key="frame" x="82" y="516" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="ch1-Gg-UUj"/>
+                                    <constraint firstAttribute="height" constant="50" id="ytT-eS-LdT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="遊び方"/>
+                                <state key="normal" title="遊  び  方">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="taphowto:" destination="BV1-FR-VrT" eventType="touchUpInside" id="aFN-He-EMN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fba-ar-nNy">
-                                <rect key="frame" x="85.5" y="614" width="243" height="48"/>
+                                <rect key="frame" x="82" y="586" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Pbc-SS-vfA"/>
+                                    <constraint firstAttribute="width" constant="250" id="gUI-32-mCO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="スコアランキング"/>
+                                <state key="normal" title="スコアランキング">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="tapScoreRanking:" destination="BV1-FR-VrT" eventType="touchUpInside" id="V22-qp-RXn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テトリス(仮)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uda-M2-sWB">
-                                <rect key="frame" x="65" y="268" width="284" height="60"/>
+                                <rect key="frame" x="65" y="241" width="284" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -145,10 +176,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cD3-RV-1Iz"/>
                     <connections>
-                        <segue destination="JX4-qD-02l" kind="show" identifier="moveGame" id="FNT-XT-brh"/>
                         <segue destination="xNa-p2-tor" kind="show" identifier="movehowto" id="t5O-1Y-Cfk"/>
                         <segue destination="4h4-7e-rmd" kind="show" identifier="moveScoreRanking" id="VFv-o7-Sgv"/>
+                        <segue destination="JX4-qD-02l" kind="show" identifier="moveGame" id="Sjz-Ao-ow5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -214,17 +246,192 @@
                                     <action selector="right:" destination="JX4-qD-02l" eventType="touchUpInside" id="YzB-9u-6Dr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enX-7B-EuY">
+                                <rect key="frame" x="333" y="5" width="76" height="42"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="ポーズ">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pause:" destination="JX4-qD-02l" eventType="touchUpInside" id="7hP-i1-HmK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32a-gR-pFm">
+                                <rect key="frame" x="10" y="10" width="31" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="32a-gR-pFm" firstAttribute="top" secondItem="hdd-nI-Y3l" secondAttribute="top" constant="10" id="enO-NH-AeJ"/>
+                            <constraint firstItem="enX-7B-EuY" firstAttribute="top" secondItem="hdd-nI-Y3l" secondAttribute="top" constant="5" id="hHF-Jz-jEZ"/>
+                            <constraint firstItem="32a-gR-pFm" firstAttribute="leading" secondItem="hdd-nI-Y3l" secondAttribute="leading" constant="10" id="wCa-ee-URU"/>
+                            <constraint firstItem="hdd-nI-Y3l" firstAttribute="trailing" secondItem="enX-7B-EuY" secondAttribute="trailing" constant="5" id="wLC-am-Dec"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hdd-nI-Y3l"/>
                     </view>
                     <navigationItem key="navigationItem" id="s3D-Pb-1pv"/>
                     <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="TimeLabel" destination="32a-gR-pFm" id="5pc-CH-PcB"/>
+                        <segue destination="LdG-lg-Y6N" kind="show" identifier="moveModal" id="Fot-m6-ShK"/>
+                        <segue destination="JIp-ag-fxd" kind="show" identifier="moveEnd" id="VKT-wg-8Se"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l01-yN-OFf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963.76811594202911" y="105.80357142857143"/>
+            <point key="canvasLocation" x="1010" y="106"/>
+        </scene>
+        <!--End View Controller-->
+        <scene sceneID="sTW-UG-KuK">
+            <objects>
+                <viewController id="JIp-ag-fxd" customClass="EndViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fhj-GR-uL0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="終了画面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyM-JM-muf">
+                                <rect key="frame" x="126.5" y="197" width="161" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJi-2V-PN6">
+                                <rect key="frame" x="118" y="400" width="178" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="メニューに戻る"/>
+                                <connections>
+                                    <action selector="backmenu:" destination="JIp-ag-fxd" eventType="touchUpInside" id="os0-gZ-9N6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LJi-2V-PN6" firstAttribute="centerX" secondItem="Fhj-GR-uL0" secondAttribute="centerX" id="8sY-L5-26r"/>
+                            <constraint firstItem="cyM-JM-muf" firstAttribute="centerX" secondItem="Fhj-GR-uL0" secondAttribute="centerX" id="NMT-Lx-per"/>
+                            <constraint firstItem="LJi-2V-PN6" firstAttribute="centerY" secondItem="Fhj-GR-uL0" secondAttribute="centerY" id="cbz-hd-21A"/>
+                            <constraint firstItem="cyM-JM-muf" firstAttribute="centerY" secondItem="Fhj-GR-uL0" secondAttribute="centerY" constant="-200" id="vfd-c8-Ujy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wJP-eF-pnC"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4IV-xC-xPd"/>
+                    <connections>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="moveMenufromEnd" id="cuu-b6-xNK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0cE-gq-gs5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013" y="826"/>
+        </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="Dsi-iU-A2v">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="LdG-lg-Y6N" customClass="ModalViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bb4-qc-lC7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk9-xl-cov">
+                                <rect key="frame" x="77" y="281" width="260" height="280"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyf-ug-lAX">
+                                        <rect key="frame" x="40" y="220" width="180" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="H92-yT-6t0"/>
+                                            <constraint firstAttribute="height" constant="40" id="mal-oY-HaN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="メニューに戻る">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backmenu:" destination="LdG-lg-Y6N" eventType="touchUpInside" id="LGu-Y2-Mc6"/>
+                                            <segue destination="BV1-FR-VrT" kind="show" identifier="moveMenufromPause" id="1hI-TI-vRf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJK-yU-v7Y">
+                                        <rect key="frame" x="39" y="24" width="180" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Kii-MI-ZI3"/>
+                                            <constraint firstAttribute="width" constant="180" id="T5L-aG-600"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="再     開">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backgame:" destination="LdG-lg-Y6N" eventType="touchUpInside" id="W4X-vq-s4K"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="wyf-ug-lAX" firstAttribute="centerX" secondItem="kk9-xl-cov" secondAttribute="centerX" id="1qL-Si-Hcs"/>
+                                    <constraint firstItem="ZJK-yU-v7Y" firstAttribute="centerX" secondItem="kk9-xl-cov" secondAttribute="centerX" constant="-1" id="AwF-dw-CEU"/>
+                                    <constraint firstAttribute="width" constant="260" id="Yfe-NX-E4A"/>
+                                    <constraint firstItem="wyf-ug-lAX" firstAttribute="centerY" secondItem="kk9-xl-cov" secondAttribute="centerY" constant="100" id="ieR-9F-aI8"/>
+                                    <constraint firstAttribute="height" constant="280" id="lLC-fY-glb"/>
+                                    <constraint firstItem="ZJK-yU-v7Y" firstAttribute="centerY" secondItem="kk9-xl-cov" secondAttribute="centerY" constant="-96" id="oxT-PZ-aC1"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="535-wG-ans">
+                                <rect key="frame" x="117" y="401" width="180" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="3ZS-B7-rzi"/>
+                                    <constraint firstAttribute="height" constant="40" id="aO2-8r-F9O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="リ ト ラ イ">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="retry:" destination="LdG-lg-Y6N" eventType="touchUpInside" id="KJ7-S1-Avs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAUSE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdv-K9-LN3">
+                                <rect key="frame" x="148" y="199.5" width="118" height="43"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kk9-xl-cov" firstAttribute="centerY" secondItem="bb4-qc-lC7" secondAttribute="centerY" id="3xg-zH-gy8"/>
+                            <constraint firstItem="Sdv-K9-LN3" firstAttribute="centerY" secondItem="bb4-qc-lC7" secondAttribute="centerY" constant="-200" id="D27-cq-v4V"/>
+                            <constraint firstItem="Sdv-K9-LN3" firstAttribute="centerX" secondItem="bb4-qc-lC7" secondAttribute="centerX" id="LG6-bJ-Z0S"/>
+                            <constraint firstItem="535-wG-ans" firstAttribute="centerX" secondItem="bb4-qc-lC7" secondAttribute="centerX" id="hw0-e9-lZd"/>
+                            <constraint firstItem="kk9-xl-cov" firstAttribute="centerX" secondItem="bb4-qc-lC7" secondAttribute="centerX" id="p1f-m7-qyv"/>
+                            <constraint firstItem="535-wG-ans" firstAttribute="centerY" secondItem="bb4-qc-lC7" secondAttribute="centerY" id="p4Z-48-g9F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G6f-7M-hJc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yFj-aK-PNv"/>
+                    <connections>
+                        <segue destination="JX4-qD-02l" kind="show" identifier="moveretry" id="qQF-ws-bQX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AIq-7s-Ycq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1854" y="106"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qQF-ws-bQX"/>
+        <segue reference="1hI-TI-vRf"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

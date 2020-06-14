@@ -22,6 +22,9 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    @IBOutlet weak var TimeLabel: UILabel!
+    
     //ブロックを定義
     var brock : UIView!
     //終了変数
@@ -30,6 +33,15 @@ class GameViewController: UIViewController {
     var counter:Int = 0
     //test用の変数2
     var counter2:Int = 0
+    //タイマー用変数
+    var Time = Timer()
+    //制限時間の変数
+    var timecounter = 60
+    //ゲームスタート時の時間
+    //let StartTime: Date = Date()
+    //ポーズ時の時間
+    //var PauseTime: Date = Date()
+    
     //ステージ上のマス目12*21
     var masume : [[Int]] = [[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0]]
      
@@ -93,7 +105,7 @@ class GameViewController: UIViewController {
         }while(counter==10)
         //}while(!finish)*/
 //時間
- Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+ Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
     }
     
 //ブロック生成
@@ -149,6 +161,18 @@ class GameViewController: UIViewController {
 //重力
  @objc func gravity() {
     
+    TimeLabel.text = String(timecounter)
+    //制限時間の表示
+    
+    if(timecounter == 0){
+        Time.invalidate()
+        self.performSegue(withIdentifier: "moveEnd", sender: self)
+    }
+    //0秒になったらタイマーを停止して終了画面へ移動
+    
+     timecounter -= 1
+    //制限時間カウント
+    
     counter2 += 1
     print(counter2)
     if(brock.frame.origin.y < 630){
@@ -191,5 +215,18 @@ class GameViewController: UIViewController {
     
     //@IBAction func rightturn(_ sender: Any) {}
     
+    
+    
+    @IBAction func pause(_ sender: Any) {
+        Time.invalidate()
+    //タイマーの停止?
+    self.performSegue(withIdentifier: "moveModal", sender: self)
+    }
+    //pause画面を表示
+    
+    
+    
+    
+        
     
 }
