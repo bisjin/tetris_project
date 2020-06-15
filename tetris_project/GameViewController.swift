@@ -100,7 +100,7 @@ class GameViewController: UIViewController {
         animator.addBehavior(collision)
         */
 //時間
- Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+        Time = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
 
     }
     
@@ -108,8 +108,7 @@ class GameViewController: UIViewController {
     @objc func brock_create(brock_Value:Int){
           brock = UIView(frame: CGRect(x:192, y:40, width:30, height:30))
         if(brock_Value == 0){
-        let bgColor = UIColor.blue
-        brock.backgroundColor = bgColor
+            brock0()
         }
         if(brock_Value == 1){
         let bgColor = UIColor.red
@@ -153,7 +152,23 @@ class GameViewController: UIViewController {
     
         }
     }*/
-    
+     //I字ブロック(blue)
+     @objc func brock0(){
+        for i in 0..<4{
+            for j in 0..<4{
+                 if(bar[i][j] == 1){
+                     brock = UIView(frame: CGRect(x:12+(j*30), y:40+(i*30), width:30, height:30))
+                  let bgColor = UIColor.blue
+                  brock.backgroundColor = bgColor
+          brock.layer.borderColor = UIColor.black.cgColor
+                            // 枠線の太さ
+                            brock.layer.borderWidth = 2
+                            brock.layer.masksToBounds = true
+                            self.view.addSubview(brock)
+                 }
+            }
+        }
+    }
 //重力
  @objc func gravity() {
     
