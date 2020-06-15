@@ -4,16 +4,7 @@
 //
 //  Created by 田中勇気 on 2020/05/26.
 //  Copyright © 2020 IOSapplication_time. All rights reserved.
-//テスト
-//テスト
-//test
 
-//aaaa
-//bbbb
-//cccc
-//dddd
-//ラストtest
-//pulltest
 
 
 import UIKit
@@ -91,14 +82,7 @@ class GameViewController: UIViewController {
         //生成の基本関数
         let brock_Value = Int.random(in: 0 ... 7)
         brock_create(brock_Value: brock_Value)
-        /*
-        //当たり判定
-        let collision = UICollisionBehavior(items: [brock,brock])
-        //当たった時の動作
-        collision.addBoundary(withIdentifier: "barrier" as NSCopying, for: UIBezierPath(rect: brock.frame))
-        // Collisionを実行
-        animator.addBehavior(collision)
-        */
+
 //時間
         Time = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
 
