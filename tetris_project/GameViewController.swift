@@ -21,6 +21,8 @@ import SwiftUI
 import SpriteKit
 import GameplayKit
 
+var animator : UIDynamicAnimator!
+
 class GameViewController: UIViewController {
     
     @IBOutlet weak var TimeLabel: UILabel!
@@ -43,9 +45,10 @@ class GameViewController: UIViewController {
     //var PauseTime: Date = Date()
     
     //ステージ上のマス目12*21
-    var masume : [[Int]] = [[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0]]
+    var teto_stage = [[Int]](repeating:[Int](repeating:0,count: 12),count: 21)
+    /*var masume : [[Int]] = [[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0]]
      
-    
+    */
     //struct brock_struct {
     //    let flg = 0
     //    var brock : UIView!
@@ -88,24 +91,17 @@ class GameViewController: UIViewController {
         //生成の基本関数
         let brock_Value = Int.random(in: 0 ... 7)
         brock_create(brock_Value: brock_Value)
-        /*repeat{
-            switch counter {
-            case 0:
-                print("counter:\(counter)")
-                brock_create()
-                counter+=1
-            default :
-                //if(brock.frame.origin.y <= 240){
-                    print("aaaa")
-                       // brock = nil
-                        brock_create()
-                        counter+=1
-                //}
-            }
-        }while(counter==10)
-        //}while(!finish)*/
+        /*
+        //当たり判定
+        let collision = UICollisionBehavior(items: [brock,brock])
+        //当たった時の動作
+        collision.addBoundary(withIdentifier: "barrier" as NSCopying, for: UIBezierPath(rect: brock.frame))
+        // Collisionを実行
+        animator.addBehavior(collision)
+        */
 //時間
  Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+
     }
     
 //ブロック生成
