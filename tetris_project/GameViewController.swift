@@ -5,7 +5,9 @@
 //  Created by 田中勇気 on 2020/05/26.
 //  Copyright © 2020 IOSapplication_time. All rights reserved.
 
-
+//brock.tag 動いてるか固定か　動いている場合削除と生成を繰り返す
+//teto_stage の数値に色情報を持たせる　１０未満なら動いている１０以上なら固定されている
+//teto_stage の判断のためにランダム範囲0~7を1~7に変更
 
 import UIKit
 import SwiftUI
@@ -13,6 +15,9 @@ import SpriteKit
 import GameplayKit
 
 var animator : UIDynamicAnimator!
+
+var brock_Value = Int.random(in: 1 ... 7)
+
 
 class GameViewController: UIViewController {
     
@@ -40,95 +45,111 @@ class GameViewController: UIViewController {
     /*var masume : [[Int]] = [[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0]]
      
     */
-    //struct brock_struct {
-    //    let flg = 0
-    //    var brock : UIView!
-    //}
-    // 画面の横幅を取得
-      //var screenWidth:CGFloat!
-      //var screenHeight:CGFloat!
-   // @IBOutlet weak var brock: UIView!
     
-   //var timer:Timer = Timer()
-    
-    /*a[3][3]={0 1 0 0
-             0 1 0 0
-             0 1 0 0
-             0 1 0 0}*/
     var bar = [
     [0,1,0,0],
     [0,1,0,0],
     [0,1,0,0],
     [0,1,0,0]]
     
-    /*a2[3][3]={0 0 0 0
-              0 0 0 0
-              1 1 1 1
-              0 0 0 0}*/
+   
     var yoko_bar = [
     [0,0,0,0],
     [0,0,0,0],
     [1,1,1,1],
     [0,0,0,0]]
     
+    var Tzi = [
+       [0,0,0,0],
+       [0,1,0,0],
+       [1,1,1,0],
+       [0,0,0,0]]
+       
+    var Tzi_yoko1 = [
+       [0,0,0,0],
+       [0,1,0,0],
+       [0,1,1,0],
+       [0,1,0,0]]
+    
+    var Tzi_yoko2 = [
+        [0,0,0,0],
+        [1,1,1,0],
+        [0,1,0,0],
+        [0,0,0,0]]
+    
+    var Tzi_yoko3 = [
+        [0,0,0,0],
+        [0,0,1,0],
+        [0,1,1,0],
+        [0,0,1,0]]
+    
+    var Lzi = [
+          [0,1,0,0],
+          [0,1,0,0],
+          [0,1,1,0],
+          [0,0,0,0]]
+    
+    var Jzi = [
+             [0,0,1,0],
+             [0,0,1,0],
+             [0,1,1,0],
+             [0,0,0,0]]
+    
+    var Szi = [
+            [0,0,0,0],
+            [0,1,1,0],
+            [1,1,0,0],
+            [0,0,0,0]]
+    
+    var Zzi = [
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,0,1,1],
+            [0,0,0,0]]
+    
+    var Ozi = [
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0]]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-             // 画面の横幅を取得
-            //screenWidth = view.frame.size.width
-            //screenHeight = view.frame.size.height
-       
         //ブロックを生成
         //生成の基本関数
-        let brock_Value = Int.random(in: 0 ... 7)
+        //let brock_Value = Int.random(in: 1 ... 7)
         brock_create(brock_Value: brock_Value)
 
 //時間
-        Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+        Time = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
 
     }
     
 //ブロック生成
     @objc func brock_create(brock_Value:Int){
-          brock = UIView(frame: CGRect(x:192, y:70, width:30, height:30))
-        brock.tag = 1;
-        if(brock_Value == 0){
-            brock0()
-        }
         if(brock_Value == 1){
-        let bgColor = UIColor.red
-        brock.backgroundColor = bgColor
+            brock1()
         }
         if(brock_Value == 2){
-        let bgColor = UIColor.green
-        brock.backgroundColor = bgColor
+            brock2()
         }
         if(brock_Value == 3){
-        let bgColor = UIColor.yellow
-        brock.backgroundColor = bgColor
+            brock3()
         }
         if(brock_Value == 4){
-        let bgColor = UIColor.orange
-        brock.backgroundColor = bgColor
+            brock4()
         }
         if(brock_Value == 5){
-        let bgColor = UIColor.purple
-        brock.backgroundColor = bgColor
+            brock5()
         }
         if(brock_Value == 6){
-        let bgColor = UIColor.magenta
-        brock.backgroundColor = bgColor
+            brock6()
         }
         if(brock_Value == 7){
-        let bgColor = UIColor.cyan
-        brock.backgroundColor = bgColor
+            brock7()
         }
-        // 枠線の色
-        brock.layer.borderColor = UIColor.black.cgColor
-        // 枠線の太さ
-        brock.layer.borderWidth = 2
-        brock.layer.masksToBounds = true
-        self.view.addSubview(brock)
+       
     }
     
     /*ブロックを配列の形式で表示
@@ -138,31 +159,81 @@ class GameViewController: UIViewController {
         }
     }*/
      //I字ブロック(blue)
-     @objc func brock0(){
+     @objc func brock1(){
         for i in 0..<4{
             for j in 0..<4{
                  if(bar[i][j] == 1){
                     teto_stage[4-i][8-j] = 1
-                    /*
-                     brock = UIView(frame: CGRect(x:102+(j*30), y:40+(i*30), width:30, height:30))
-                    brock.tag = 1;
-                  let bgColor = UIColor.blue
-                  brock.backgroundColor = bgColor
-          brock.layer.borderColor = UIColor.black.cgColor
-                            // 枠線の太さ
-                            brock.layer.borderWidth = 2
-                            brock.layer.masksToBounds = true
-                            self.view.addSubview(brock)
-                     */
                  }
             }
         }
     }
+    //T字ブロック(red)
+     @objc func brock2(){
+        for i in 0..<4{
+            for j in 0..<4{
+                 if(Tzi[i][j] == 1){
+                    teto_stage[4-i][8-j] = 2
+                 }
+            }
+        }
+    }
+    //L字ブロック(green)
+        @objc func brock3(){
+           for i in 0..<4{
+               for j in 0..<4{
+                    if(Lzi[i][j] == 1){
+                       teto_stage[4-i][8-j] = 3
+                    }
+               }
+           }
+       }
+    //J字ブロック(yellow)
+        @objc func brock4(){
+           for i in 0..<4{
+               for j in 0..<4{
+                    if(Jzi[i][j] == 1){
+                       teto_stage[4-i][8-j] = 4
+                    }
+               }
+           }
+       }
+    //S字ブロック(orange)
+        @objc func brock5(){
+           for i in 0..<4{
+               for j in 0..<4{
+                    if(Szi[i][j] == 1){
+                       teto_stage[4-i][8-j] = 5
+                    }
+               }
+           }
+       }
+    //Z字ブロック(purple)
+        @objc func brock6(){
+           for i in 0..<4{
+               for j in 0..<4{
+                    if(Zzi[i][j] == 1){
+                       teto_stage[4-i][8-j] = 6
+                    }
+               }
+           }
+       }
+    //O字ブロック(magenta)
+        @objc func brock7(){
+           for i in 0..<4{
+               for j in 0..<4{
+                    if(Ozi[i][j] == 1){
+                       teto_stage[4-i][8-j] = 7
+                    }
+               }
+           }
+       }
+    
     
     @objc func brock_draw(){
         for_i :for y in 0..<12{
          for x in 0..<21{
-            if(teto_stage[x][y] == 1 || teto_stage[x][y] == 2){
+            if(teto_stage[x][y] == 1 || teto_stage[x][y] == 10){
                 brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
                                    brock.tag = 1;
                                  let bgColor = UIColor.blue
@@ -174,12 +245,86 @@ class GameViewController: UIViewController {
                                            self.view.addSubview(brock)
                 
                 }
+        if(teto_stage[x][y] == 2 || teto_stage[x][y] == 20){
+              brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                                 brock.tag = 1;
+                               let bgColor = UIColor.red
+                               brock.backgroundColor = bgColor
+                       brock.layer.borderColor = UIColor.black.cgColor
+                                         // 枠線の太さ
+                                         brock.layer.borderWidth = 2
+                                         brock.layer.masksToBounds = true
+                                         self.view.addSubview(brock)
+              
+                  }
+            if(teto_stage[x][y] == 3 || teto_stage[x][y] == 30){
+                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                                      brock.tag = 1;
+                                    let bgColor = UIColor.green
+                                    brock.backgroundColor = bgColor
+                            brock.layer.borderColor = UIColor.black.cgColor
+                                              // 枠線の太さ
+                                              brock.layer.borderWidth = 2
+                                              brock.layer.masksToBounds = true
+                                              self.view.addSubview(brock)
+                   
+                       }
+            if(teto_stage[x][y] == 4 || teto_stage[x][y] == 40){
+                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                                      brock.tag = 1;
+                                    let bgColor = UIColor.yellow
+                                    brock.backgroundColor = bgColor
+                            brock.layer.borderColor = UIColor.black.cgColor
+                                              // 枠線の太さ
+                                              brock.layer.borderWidth = 2
+                                              brock.layer.masksToBounds = true
+                                              self.view.addSubview(brock)
+                   
+                       }
+            if(teto_stage[x][y] == 5 || teto_stage[x][y] == 50){
+                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                                      brock.tag = 1;
+                                    let bgColor = UIColor.orange
+                                    brock.backgroundColor = bgColor
+                            brock.layer.borderColor = UIColor.black.cgColor
+                                              // 枠線の太さ
+                                              brock.layer.borderWidth = 2
+                                              brock.layer.masksToBounds = true
+                                              self.view.addSubview(brock)
+                   
+                       }
+            if(teto_stage[x][y] == 6 || teto_stage[x][y] == 60){
+                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                                      brock.tag = 1;
+                                    let bgColor = UIColor.purple
+                                    brock.backgroundColor = bgColor
+                            brock.layer.borderColor = UIColor.black.cgColor
+                                              // 枠線の太さ
+                                              brock.layer.borderWidth = 2
+                                              brock.layer.masksToBounds = true
+                                              self.view.addSubview(brock)
+                   
+                       }
+            if(teto_stage[x][y] == 7 || teto_stage[x][y] == 70){
+                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                                      brock.tag = 1;
+                                    let bgColor = UIColor.magenta
+                                    brock.backgroundColor = bgColor
+                            brock.layer.borderColor = UIColor.black.cgColor
+                                              // 枠線の太さ
+                                              brock.layer.borderWidth = 2
+                                              brock.layer.masksToBounds = true
+                                              self.view.addSubview(brock)
+                   
+                       }
+            
             }
         }
     }
 //重力
  @objc func gravity() {
     
+     
     TimeLabel.text = String(timecounter)
     //制限時間の表示
     
@@ -214,47 +359,44 @@ class GameViewController: UIViewController {
     }
     */
     
-    print(teto_stage)
-    //stage確認用
+  
+    
+    print(brock_Value)
     
     for_i :for y in 0..<21{
         //print("brock_check x =",y)
-       
         //x
         for x in 0..<12{
              //print("brock_check y =",x)
-            
             //print("ccc")
             //print("x\(11-x)")
             //print("y\(20-y)")
             
         
             //その配列にブロックがある時
-            if(teto_stage[20-y][11-x] == 1){
+            if(teto_stage[20-y][11-x] < 10 && teto_stage[20-y][11-x] != 0){
                 print("Find!!")
                 //ブロックが一番下に来た時
                 if(y==0){
-                     teto_stage[20-y][11-x] = 2
+                     teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
+                    brock.tag = 2;
                     print("break1")
+                    print(teto_stage)
+                    brock_fix()
                     //break for_i
                 }//それ以外の場合
                 else{
                     //下のブロックが2である時、その場で固定、2になる
-                    if(teto_stage[20-y+1][11-x] == 2){
-                    teto_stage[20-y][11-x] = 2
+                    if(teto_stage[20-y+1][11-x] >= 10){
+                    teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
                         brock.tag = 2;
-                    //次のブロックを生成する
-                    /*
-                    let brock_Value = Int.random(in: 0 ... 7)
-                        brock_create(brock_Value: brock_Value)
                         print("break2")
-                        break for_i
-                    */
-                    //ブロックを構成する小さなブロックひとつしか固定されない？
+                        brock_fix()
+                        break
                     }//それ以外の場合、ブロックが１つ下に下がる
                     else{
+                        teto_stage[20-y+1][11-x] = teto_stage[20-y][11-x]
                         teto_stage[20-y][11-x] = 0
-                        teto_stage[20-y+1][11-x] = 1
                         print("break3")
                         //break for_i
                     }
@@ -262,12 +404,25 @@ class GameViewController: UIViewController {
             }
         }
     }
-
+    print(teto_stage)
+      //stage確認用
     if(counter2%21==0){
-        let brock_Value = Int.random(in: 0 ... 7)
+        var brock_Value = Int.random(in: 1 ... 7)
         brock_create(brock_Value: brock_Value)
     }
+     
  }
+    @objc func brock_fix(){
+        print("fix")
+        for_i :for y in 0..<21{
+            for x in 0..<12{
+                if(teto_stage[20-y][11-x] < 10 && teto_stage[20-y][11-x] != 0){
+                    teto_stage[20-y][11-x]=teto_stage[20-y][11-x] * 10
+                }
+            }
+        }
+
+    }
     
     
     //左ボタン
@@ -292,7 +447,7 @@ class GameViewController: UIViewController {
         }
         print("afterRect: \(brock.frame)")
         counter2 = 0
-        let brock_Value = Int.random(in: 0 ... 7)
+        var brock_Value = Int.random(in: 1 ... 7)
         brock_create(brock_Value: brock_Value)
     }
     
