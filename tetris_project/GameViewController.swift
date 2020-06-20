@@ -84,13 +84,14 @@ class GameViewController: UIViewController {
         brock_create(brock_Value: brock_Value)
 
 //時間
-        Time = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+        Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
 
     }
     
 //ブロック生成
     @objc func brock_create(brock_Value:Int){
           brock = UIView(frame: CGRect(x:192, y:40, width:30, height:30))
+        brock.tag = 1;
         if(brock_Value == 0){
             brock0()
         }
@@ -141,7 +142,10 @@ class GameViewController: UIViewController {
         for i in 0..<4{
             for j in 0..<4{
                  if(bar[i][j] == 1){
-                     brock = UIView(frame: CGRect(x:12+(j*30), y:40+(i*30), width:30, height:30))
+                    teto_stage[4-i][8-j] = 1
+                    /*
+                     brock = UIView(frame: CGRect(x:102+(j*30), y:40+(i*30), width:30, height:30))
+                    brock.tag = 1;
                   let bgColor = UIColor.blue
                   brock.backgroundColor = bgColor
           brock.layer.borderColor = UIColor.black.cgColor
@@ -149,7 +153,27 @@ class GameViewController: UIViewController {
                             brock.layer.borderWidth = 2
                             brock.layer.masksToBounds = true
                             self.view.addSubview(brock)
+                     */
                  }
+            }
+        }
+    }
+    
+    @objc func brock_draw(){
+        for_i :for y in 0..<12{
+         for x in 0..<21{
+            if(teto_stage[x][y] == 1){
+                brock = UIView(frame: CGRect(x:(y*30), y:(x*30), width:30, height:30))
+                                   brock.tag = 1;
+                                 let bgColor = UIColor.blue
+                                 brock.backgroundColor = bgColor
+                         brock.layer.borderColor = UIColor.black.cgColor
+                                           // 枠線の太さ
+                                           brock.layer.borderWidth = 2
+                                           brock.layer.masksToBounds = true
+                                           self.view.addSubview(brock)
+                
+                }
             }
         }
     }
@@ -158,6 +182,20 @@ class GameViewController: UIViewController {
     
     TimeLabel.text = String(timecounter)
     //制限時間の表示
+    
+    print(teto_stage)
+    //stage確認用
+    
+    for v in view.subviews{
+        if let v = v as? UIView, v.tag == 1{
+            v.removeFromSuperview()
+        }
+    }
+ 
+    
+    brock_draw()
+    
+    //brockの削除
     
     if(timecounter == 0){
         Time.invalidate()
@@ -170,9 +208,61 @@ class GameViewController: UIViewController {
     
     counter2 += 1
     print(counter2)
+    /*
     if(brock.frame.origin.y < 630){
     brock.frame.origin.y += 30
     }
+    */
+    
+    print(teto_stage)
+    //stage確認用
+    
+    for_i :for y in 0..<21{
+        //print("brock_check x =",y)
+       
+        //x
+        for x in 0..<12{
+             //print("brock_check y =",x)
+            
+            //print("ccc")
+            print("x\(11-x)")
+            print("y\(20-y)")
+            
+        
+            //その配列にブロックがある時
+            if(teto_stage[20-y][11-x] == 1){
+                print("Find!!")
+                //ブロックが一番下に来た時
+                if(y==0){
+                     teto_stage[20-y][11-x] = 2
+                    print("break1")
+                    break for_i
+                }//それ以外の場合
+                else{
+                    //下のブロックが2である時、その場で固定、2になる
+                    if(teto_stage[20-y][11-x+1] == 2){
+                    teto_stage[20-y][11-x] = 2
+                        //brock.tag = 2;
+                    //次のブロックを生成する
+                    /*
+                    let brock_Value = Int.random(in: 0 ... 7)
+                        brock_create(brock_Value: brock_Value)
+                        print("break2")
+                        break for_i
+                    */
+                    //ブロックを構成する小さなブロックひとつしか固定されない？
+                    }//それ以外の場合、ブロックが１つ下に下がる
+                    else{
+                        teto_stage[20-y][11-x] = 0
+                        teto_stage[20-y+1][11-x] = 1
+                        print("break3")
+                        //break for_i
+                    }
+                }
+            }
+        }
+    }
+
     if(counter2%21==0){
         let brock_Value = Int.random(in: 0 ... 7)
         brock_create(brock_Value: brock_Value)
