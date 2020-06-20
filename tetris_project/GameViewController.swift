@@ -90,7 +90,7 @@ class GameViewController: UIViewController {
     
 //ブロック生成
     @objc func brock_create(brock_Value:Int){
-          brock = UIView(frame: CGRect(x:192, y:40, width:30, height:30))
+          brock = UIView(frame: CGRect(x:192, y:70, width:30, height:30))
         brock.tag = 1;
         if(brock_Value == 0){
             brock0()
@@ -162,8 +162,8 @@ class GameViewController: UIViewController {
     @objc func brock_draw(){
         for_i :for y in 0..<12{
          for x in 0..<21{
-            if(teto_stage[x][y] == 1){
-                brock = UIView(frame: CGRect(x:(y*30), y:(x*30), width:30, height:30))
+            if(teto_stage[x][y] == 1 || teto_stage[x][y] == 2){
+                brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
                                    brock.tag = 1;
                                  let bgColor = UIColor.blue
                                  brock.backgroundColor = bgColor
@@ -225,8 +225,8 @@ class GameViewController: UIViewController {
              //print("brock_check y =",x)
             
             //print("ccc")
-            print("x\(11-x)")
-            print("y\(20-y)")
+            //print("x\(11-x)")
+            //print("y\(20-y)")
             
         
             //その配列にブロックがある時
@@ -236,13 +236,13 @@ class GameViewController: UIViewController {
                 if(y==0){
                      teto_stage[20-y][11-x] = 2
                     print("break1")
-                    break for_i
+                    //break for_i
                 }//それ以外の場合
                 else{
                     //下のブロックが2である時、その場で固定、2になる
-                    if(teto_stage[20-y][11-x+1] == 2){
+                    if(teto_stage[20-y+1][11-x] == 2){
                     teto_stage[20-y][11-x] = 2
-                        //brock.tag = 2;
+                        brock.tag = 2;
                     //次のブロックを生成する
                     /*
                     let brock_Value = Int.random(in: 0 ... 7)
