@@ -359,8 +359,6 @@ class GameViewController: UIViewController {
     }
     */
     
-  
-    
     print(brock_Value)
     
     for_i :for y in 0..<21{
@@ -377,6 +375,7 @@ class GameViewController: UIViewController {
             if(teto_stage[20-y][11-x] < 10 && teto_stage[20-y][11-x] != 0){
                 print("Find!!")
                 //ブロックが一番下に来た時
+                
                 if(y==0){
                      teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
                     brock.tag = 2;
@@ -398,7 +397,13 @@ class GameViewController: UIViewController {
                         teto_stage[20-y+1][11-x] = teto_stage[20-y][11-x]
                         teto_stage[20-y][11-x] = 0
                         print("break3")
-                        //break for_i
+                        if(teto_stage[20-y+1][11-x] >= 10){
+                        teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
+                            brock.tag = 2;
+                            print("break4")
+                            brock_fix()
+                            break
+                        }
                     }
                 }
             }
