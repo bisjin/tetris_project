@@ -5,7 +5,7 @@
 //  Created by 田中勇気 on 2020/05/26.
 //  Copyright © 2020 IOSapplication_time. All rights reserved.
 
-//brock.tag 動いてるか固定か　動いている場合削除と生成を繰り返す
+//brock.tag tag = 1 なら削除。現状全削除
 //teto_stage の数値に色情報を持たせる　１０未満なら動いている１０以上なら固定されている
 //teto_stage の判断のためにランダム範囲0~7を1~7に変更
 
@@ -17,6 +17,8 @@ import GameplayKit
 var animator : UIDynamicAnimator!
 
 var brock_Value = Int.random(in: 1 ... 7)
+
+var br_count = 0
 
 
 class GameViewController: UIViewController {
@@ -328,7 +330,7 @@ class GameViewController: UIViewController {
     TimeLabel.text = String(timecounter)
     //制限時間の表示
     
-    print(teto_stage)
+    //print(teto_stage)
     //stage確認用
     
     for v in view.subviews{
@@ -349,6 +351,7 @@ class GameViewController: UIViewController {
     //0秒になったらタイマーを停止して終了画面へ移動
     
      timecounter -= 1
+     timecounter += 1
     //制限時間カウント
     
     counter2 += 1
@@ -358,13 +361,14 @@ class GameViewController: UIViewController {
     brock.frame.origin.y += 30
     }
     */
+    var bro_y = [0,0,0,0]
+    var bro_x = [0,0,0,0]
+    //print(brock_Value)
     
-    print(brock_Value)
-    
-    for_i :for y in 0..<21{
+    for_i :for var y in 0..<21{
         //print("brock_check x =",y)
         //x
-        for x in 0..<12{
+        for var x in 0..<12{
              //print("brock_check y =",x)
             //print("ccc")
             //print("x\(11-x)")
@@ -374,42 +378,54 @@ class GameViewController: UIViewController {
             //その配列にブロックがある時
             if(teto_stage[20-y][11-x] < 10 && teto_stage[20-y][11-x] != 0){
                 print("Find!!")
+                //print("x\(11-x)")
+                //print("y\(20-y)")
                 //ブロックが一番下に来た時
                 
                 if(y==0){
                      teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
-                    brock.tag = 2;
+                    //brock.tag = 2;
                     print("break1")
                     print(teto_stage)
                     brock_fix()
+                    br_count = 0
                     //break for_i
                 }//それ以外の場合
                 else{
                     //下のブロックが2である時、その場で固定、2になる
                     if(teto_stage[20-y+1][11-x] >= 10){
                     teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
-                        brock.tag = 2;
+                        //brock.tag = 2;
                         print("break2")
                         brock_fix()
+                        br_count = 0
                         break
                     }//それ以外の場合、ブロックが１つ下に下がる
                     else{
-                        teto_stage[20-y+1][11-x] = teto_stage[20-y][11-x]
-                        teto_stage[20-y][11-x] = 0
+                        br_count += 1
+                        print("br_count+1")
+                        print("x\(11-x)")
+                        print("y\(20-y)")
+                        //if(br_count==1){
+                            bro_y[br_count-1] = y
+                            bro_x[br_count-1] = x
+                            print("bro_x\(bro_x),bro_y\(bro_y)copy")
+                        //}
+                        if(br_count == 4){
+                            for g in 0..<4{
+                        teto_stage[20-bro_y[g]+1][11-bro_x[g]] = teto_stage[20-bro_y[g]][11-bro_x[g]]
+                        teto_stage[20-bro_y[g]][11-bro_x[g]] = 0
+                        
+                            }
                         print("break3")
-                        if(teto_stage[20-y+1][11-x] >= 10){
-                        teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
-                            brock.tag = 2;
-                            print("break4")
-                            brock_fix()
-                            break
+                        br_count = 0
                         }
                     }
                 }
             }
         }
     }
-    print(teto_stage)
+    //print(teto_stage)
       //stage確認用
     if(counter2%21==0){
         var brock_Value = Int.random(in: 1 ... 7)
@@ -447,11 +463,39 @@ class GameViewController: UIViewController {
     }
     //下ボタン
     @IBAction func under(_ sender: Any) {
-        if(brock.frame.origin.y < 640){
+       /* if(brock.frame.origin.y < 640){
         brock.frame.origin.y = 640
         }
         print("afterRect: \(brock.frame)")
+         */
         counter2 = 0
+        var brock_x = 0
+        var brock_y = 0
+        
+        for_i :for y in 0..<21{
+        //print("brock_check x =",y)
+        //x
+        for x in 0..<12{
+            if(y==0){
+             teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
+                brock.tag = 2;
+                print("break1")
+                //print(teto_stage)
+                brock_fix()
+            }
+             if(teto_stage[20-y][11-x] < 10 && teto_stage[20-y][11-x] != 0){
+                for  bry in y..<21{
+                    if(teto_stage[bry+1][x] >= 10 ){
+                        teto_stage[bry][x] = teto_stage[y][x]
+                        teto_stage[y][x] = 0
+                        brock_fix()
+                        break
+                        }
+                    }
+                }
+            
+            }
+        }
         var brock_Value = Int.random(in: 1 ... 7)
         brock_create(brock_Value: brock_Value)
     }
