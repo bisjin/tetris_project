@@ -511,21 +511,40 @@ class GameViewController: UIViewController {
         }
         //落ちてくるブロックの一番したと着地できる場所の距離
         var min = 100
+        var sita_brock = 0
+        
         for i in 0..<4{
-            for yy in 0..<21{
+            for yy in brock_serch_y[i]..<21{
                 print("a:i=\(i)--yy=\(yy)--min=\(min)")
-                if(teto_stage[yy][brock_serch_x[i]] >= 10 || yy == 20){
+                if(teto_stage[yy][brock_serch_x[i]] >= 10 ){
+                    sita_brock += 1
                     if(min > yy  -  brock_serch_y[i]  ){
-                        if(yy != 20){
-                            min = yy - 2 - brock_serch_y[i]
-                            break
-                        }
-                        min = yy - brock_serch_y[i]
+                        min = yy - brock_serch_y[i] - 1
                         break
                     }
                     print("b:i=\(i)--yy=\(yy)--min=\(min)")
                 }
             }
+        }
+        //一番下まで落下
+        if(sita_brock == 0){
+            print("max_down")
+            var max_serch_y = -1
+            for n in 0..<4{
+                //動いている中で一番したにあるブロックのyを探す。
+                if(max_serch_y < brock_serch_y[n]){
+                max_serch_y = brock_serch_y[n]
+                }
+            }
+            
+            for i in 0..<4{
+               teto_stage[brock_serch_y[i] + 20 - max_serch_y][brock_serch_x[i]]=teto_stage[brock_serch_y[i]][brock_serch_x[i]] * 10
+                
+                teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
+            }
+            var brock_Value = Int.random(in: 1 ... 7)
+            brock_create(brock_Value: brock_Value)
+            return
         }
        
         print("min = \(min)")
