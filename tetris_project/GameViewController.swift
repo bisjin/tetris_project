@@ -20,6 +20,9 @@ var brock_Value = Int.random(in: 1 ... 7)
 
 var br_count = 0
 
+var brock_serch_y = [0,0,0,0]
+var brock_serch_x = [0,0,0,0]
+
 
 class GameViewController: UIViewController {
     
@@ -47,6 +50,8 @@ class GameViewController: UIViewController {
     /*var masume : [[Int]] = [[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0]]
      
     */
+    
+    
     
     var bar = [
     [0,1,0,0],
@@ -124,7 +129,7 @@ class GameViewController: UIViewController {
         brock_create(brock_Value: brock_Value)
 
 //時間
-        Time = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+        Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
 
     }
     
@@ -341,7 +346,14 @@ class GameViewController: UIViewController {
  
     
     brock_draw()
-    
+    /*
+    for h in 0..<21{
+        for w in 0..<12{
+        teto_stage[h][w] = h
+        }
+    }
+    print(teto_stage)
+    */
     //brockの削除
     
     if(timecounter == 0){
@@ -374,13 +386,14 @@ class GameViewController: UIViewController {
             //print("x\(11-x)")
             //print("y\(20-y)")
             
-        
+            //print("y=\(y)")
             //その配列にブロックがある時
             if(teto_stage[20-y][11-x] < 10 && teto_stage[20-y][11-x] != 0){
                 print("Find!!")
                 //print("x\(11-x)")
                 //print("y\(20-y)")
                 //ブロックが一番下に来た時
+                
                 
                 if(y==0){
                      teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
@@ -399,7 +412,7 @@ class GameViewController: UIViewController {
                         print("break2")
                         brock_fix()
                         br_count = 0
-                        break
+                        break for_i
                     }//それ以外の場合、ブロックが１つ下に下がる
                     else{
                         br_count += 1
@@ -419,13 +432,14 @@ class GameViewController: UIViewController {
                             }
                         print("break3")
                         br_count = 0
+                        break for_i
                         }
                     }
                 }
             }
         }
     }
-    //print(teto_stage)
+    print(teto_stage)
       //stage確認用
     if(counter2%21==0){
         var brock_Value = Int.random(in: 1 ... 7)
@@ -442,10 +456,28 @@ class GameViewController: UIViewController {
                 }
             }
         }
-
     }
     
-    
+    @objc func brock_serch(){
+        var br_counter = 0
+        print("brock serch")
+        //print("br_count+1")
+        //print("x\(11-x)")
+        //print("y\(20-y)")
+        for y in 0..<21{
+            for x in 0..<12{
+                if(teto_stage[y][x] < 10 && teto_stage[y][x] != 0){
+                    if(br_counter == 4){
+                        return
+                    }
+                    brock_serch_y[br_counter] = y
+                    brock_serch_x[br_counter] = x
+                    print("brock_serch_x\(brock_serch_x),brock_serch_y\(brock_serch_y)copy")
+                    br_counter += 1
+                }
+            }
+        }
+    }
     //左ボタン
     @IBAction func left(_ sender: Any) {
         if(brock.frame.origin.x > 12
@@ -463,39 +495,49 @@ class GameViewController: UIViewController {
     }
     //下ボタン
     @IBAction func under(_ sender: Any) {
-       /* if(brock.frame.origin.y < 640){
-        brock.frame.origin.y = 640
-        }
-        print("afterRect: \(brock.frame)")
-         */
+         
+        print("Push sita Botan")
         counter2 = 0
-        var brock_x = 0
-        var brock_y = 0
-        
-        for_i :for y in 0..<21{
-        //print("brock_check x =",y)
-        //x
-        for x in 0..<12{
-            if(y==0){
-             teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
-                brock.tag = 2;
-                print("break1")
-                //print(teto_stage)
+
+        brock_serch()
+        for i in 0..<4{
+            if(brock_serch_y[i] == 0){
+                print("sita_break1")
                 brock_fix()
-            }
-             if(teto_stage[20-y][11-x] < 10 && teto_stage[20-y][11-x] != 0){
-                for  bry in y..<21{
-                    if(teto_stage[bry+1][x] >= 10 ){
-                        teto_stage[bry][x] = teto_stage[y][x]
-                        teto_stage[y][x] = 0
-                        brock_fix()
-                        break
-                        }
-                    }
-                }
-            
+                var brock_Value = Int.random(in: 1 ... 7)
+                brock_create(brock_Value: brock_Value)
+                return
             }
         }
+        //落ちてくるブロックの一番したと着地できる場所の距離
+        var min = 100
+        for i in 0..<4{
+            for yy in 0..<21{
+                print("a:i=\(i)--yy=\(yy)--min=\(min)")
+                if(teto_stage[yy][brock_serch_x[i]] >= 10 || yy == 20){
+                    if(min > yy  -  brock_serch_y[i]  ){
+                        if(yy != 20){
+                            min = yy - 2 - brock_serch_y[i]
+                            break
+                        }
+                        min = yy - brock_serch_y[i]
+                        break
+                    }
+                    print("b:i=\(i)--yy=\(yy)--min=\(min)")
+                }
+            }
+        }
+       
+        print("min = \(min)")
+        
+        for k in 0..<4{
+            print("down")
+           teto_stage[brock_serch_y[k]+min][brock_serch_x[k]] = teto_stage[brock_serch_y[k]][brock_serch_x[k]] * 10
+            teto_stage[brock_serch_y[k]][brock_serch_x[k]] = 0
+            
+        }
+        print("^^^^^^^^^^^^^^^^^")
+        print(teto_stage)
         var brock_Value = Int.random(in: 1 ... 7)
         brock_create(brock_Value: brock_Value)
     }
