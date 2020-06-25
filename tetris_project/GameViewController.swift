@@ -23,9 +23,6 @@ var br_count = 0
 var brock_serch_y = [0,0,0,0]
 var brock_serch_x = [0,0,0,0]
 
-var sita_flg = 0
-
-
 class GameViewController: UIViewController {
     
     @IBOutlet weak var TimeLabel: UILabel!
@@ -357,10 +354,6 @@ class GameViewController: UIViewController {
     counter2 += 1
     print("counter2 = \(counter2)")
     brock_gravity()
-    if(sita_flg == 1){
-         sita_botan()
-        return
-     }
     if(counter2%21==0){
     var brock_Value = Int.random(in: 1 ... 7)
     brock_create(brock_Value: brock_Value)
@@ -386,9 +379,6 @@ class GameViewController: UIViewController {
                        print(teto_stage)
                        brock_fix()
                        br_count = 0
-                       if(sita_flg == 1){
-                       return
-                        }
                    }//それ以外の場合
                    else{
                        //下のブロックが2である時、その場で固定、2になる
@@ -397,20 +387,12 @@ class GameViewController: UIViewController {
                            print("break2")
                            brock_fix()
                            br_count = 0
-                           if(sita_flg == 1){
-                           return
-                            }
                        }//それ以外の場合、ブロックが１つ下に下がる
                        else{
                            br_count += 1
                           
                                bro_y[br_count-1] = y
                                bro_x[br_count-1] = x
-                        if(sita_flg == 1){
-                                    br_count = 0
-                                    print("ridatu")
-                                    return
-                                                   }
                         if(br_count == 4){
                                print("bro_x\(bro_x),bro_y\(bro_y)copy")
                           
@@ -421,9 +403,6 @@ class GameViewController: UIViewController {
                                }
                            print("break3")
                            br_count = 0
-                           if(sita_flg == 1){
-                           return
-                            }
                            }
                        }
                    }
@@ -479,11 +458,7 @@ class GameViewController: UIViewController {
     }
     //下ボタン
     @IBAction func under(_ sender: Any) {
-        sita_flg = 1
         print("Push sita Botan")
-    }
-    
-    @objc func sita_botan(){
         print("down_action_start")
         print(teto_stage)
         //落ちてくるブロックの一番したと着地できる場所の距離
@@ -496,7 +471,7 @@ class GameViewController: UIViewController {
              if(brock_serch_y[i] == 0){
                  print("sita_break1")
                  brock_fix()
-                sita_flg = 0
+                brock_draw()
                  var brock_Value = Int.random(in: 1 ... 7)
                  brock_create(brock_Value: brock_Value)
                  return
@@ -537,7 +512,7 @@ class GameViewController: UIViewController {
                  teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
              }
             print("max_serch_y = \(20 - max_serch_y)")
-            sita_flg = 0
+            brock_draw()
              var brock_Value = Int.random(in: 1 ... 7)
              brock_create(brock_Value: brock_Value)
              return
@@ -557,7 +532,7 @@ class GameViewController: UIViewController {
          }
          print("^^^^^^^^^^^^^^^^^")
          print(teto_stage)
-        sita_flg = 0
+        brock_draw()
          var brock_Value = Int.random(in: 1 ... 7)
          brock_create(brock_Value: brock_Value)
         
