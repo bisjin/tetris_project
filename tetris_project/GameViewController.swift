@@ -9,6 +9,8 @@
 //teto_stage の数値に色情報を持たせる　１０未満なら動いている１０以上なら固定されている
 //teto_stage の判断のためにランダム範囲0~7を1~7に変更
 
+//teto_stageのyの３より上にブロックがあったらメニューに移動
+
 import UIKit
 import SwiftUI
 import SpriteKit
@@ -330,6 +332,7 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
 //重力
  @objc func gravity() {
     
@@ -355,20 +358,19 @@ class GameViewController: UIViewController {
     //制限時間カウント
     counter2 += 1
     print("counter2 = \(counter2)")
-    if(idou_flg == 1){
-        idou_flg = 0
-        br_count = 0
-        print("ridatu")
-        return
-    }
-    brock_gravity()
     
-/*
-    if(counter2%21==0){
-    var brock_Value = Int.random(in: 1 ... 7)
-    brock_create(brock_Value: brock_Value)
+    brock_gravity()
+    brock_line_delete()
+    
+    for y in 0..<3{
+        for x in 0..<11{
+            if(teto_stage[y][x] >= 10){
+                print("Game Over")
+                Time.invalidate()
+                self.performSegue(withIdentifier: "moveEnd", sender: self)
+            }
+        }
     }
- */
 }
 
 
@@ -401,18 +403,15 @@ class GameViewController: UIViewController {
                            print("break2")
                            brock_fix()
                            br_count = 0
+                        var brock_Value = Int.random(in: 1 ... 7)
+                            brock_create(brock_Value: brock_Value)
+                        return
                        }//それ以外の場合、ブロックが１つ下に下がる
                        else{
                            br_count += 1
                           
                                bro_y[br_count-1] = y
                                bro_x[br_count-1] = x
-                        if(idou_flg == 1){
-                            idou_flg = 0
-                            br_count = 0
-                            print("ridatu")
-                            return
-                        }
                         if(br_count == 4){
                                print("bro_x\(bro_x),bro_y\(bro_y)copy")
                           
@@ -447,8 +446,8 @@ class GameViewController: UIViewController {
     @objc func brock_serch(){
         var br_counter = 0
         print("brock serch")
-        for y in 0..<19{
-            for x in 0..<11{
+        for y in 0..<20{
+            for x in 0..<12{
                 if(teto_stage[y][x] < 10 && teto_stage[y][x] != 0){
                     if(br_counter == 4){
                         return
@@ -461,6 +460,36 @@ class GameViewController: UIViewController {
         }
         print("brock_serch_x\(brock_serch_x),brock_serch_y\(brock_serch_y)copy")
     }
+    
+    @objc func brock_line_delete(){
+        var line_flg = 0
+        print("delete_line")
+        for y in 0..<20{
+            for x in 0..<12{
+                if(teto_stage[y][x] >= 10){
+                    line_flg += 1
+                    print("line_flg\(line_flg)")
+                    if(line_flg == 12){
+                        print("delete_start")
+                        for yy in 0..<20{
+                            for xx in 0..<12{
+                                teto_stage[19 - y][11 - xx] = teto_stage[19 - y - 1][11 - x]
+                            }
+                        }
+                    }
+                    for v in view.subviews{
+                        if let v = v as? UIView, v.tag == 1{
+                            v.removeFromSuperview()
+                        }
+                    }
+                    brock_draw()
+                    
+                }
+            }
+            line_flg = 0
+        }
+    }
+    
     //左ボタン
     @IBAction func left(_ sender: Any) {
         idou_flg = 1
@@ -468,8 +497,11 @@ class GameViewController: UIViewController {
         brock_serch()
         for i in 0..<4{
             if(brock_serch_x[i] == 0){
+                print("already_left_max")
                 return
             }
+        }
+            for i in 0..<4{
             if((teto_stage[brock_serch_y[i]][brock_serch_x[i]-1] != 0 && teto_stage[brock_serch_y[i]][brock_serch_x[i]-1] != teto_stage[brock_serch_y[i]][brock_serch_x[i]] )){
                 print("left_exist brock")
                 return
@@ -491,6 +523,7 @@ class GameViewController: UIViewController {
             teto_stage[brock_serch_y[i]][brock_serch_x[i]-1] = tmp
         }
         brock_draw()
+        brock_line_delete()
         return
     }
     //右ボタン
@@ -500,8 +533,12 @@ class GameViewController: UIViewController {
         brock_serch()
         for i in 0..<4{
             if(brock_serch_x[i] == 11){
-                return
+            print("already_right_max")
+            return
             }
+        }
+        
+        for i in 0..<4{
             if((teto_stage[brock_serch_y[i]][brock_serch_x[i]+1] != 0 && teto_stage[brock_serch_y[i]][brock_serch_x[i]+1] != teto_stage[brock_serch_y[i]][brock_serch_x[i]] )){
                 print("right_exist brock")
                 return
@@ -518,10 +555,12 @@ class GameViewController: UIViewController {
                 v.removeFromSuperview()
             }
         }
+        
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]+1] = tmp
         }
         brock_draw()
+        brock_line_delete()
         return
     }
     //下ボタン
@@ -539,6 +578,7 @@ class GameViewController: UIViewController {
                  print("sita_break1")
                  brock_fix()
                 brock_draw()
+                brock_line_delete()
                  var brock_Value = Int.random(in: 1 ... 7)
                  brock_create(brock_Value: brock_Value)
                  return
@@ -552,7 +592,7 @@ class GameViewController: UIViewController {
             print("i=\(i)")
             for_i :for yy in brock_serch_y[i]..<20{
                 print("a:i=\(i)/yy=\( yy)/min=\(min)/yy-bro=\( yy  -  brock_serch_y[i])")
-                 if(teto_stage[yy][brock_serch_x[i]] >= 10 ){
+                 if(yy == 19 || teto_stage[yy + 1][brock_serch_x[i]] >= 10){
                      sita_brock += 1
                      if(min > yy - brock_serch_y[i]  ){
                          min = yy - brock_serch_y[i]
@@ -562,35 +602,18 @@ class GameViewController: UIViewController {
                  }
              }
          }
-         //一番下まで落下
-         if(sita_brock == 0){
-             print("max_down")
-             var max_serch_y = -1
-             for n in 0..<4{
-                 //動いている中で一番したにあるブロックのyを探す。
-                 if(max_serch_y < brock_serch_y[n]){
-                 max_serch_y = brock_serch_y[n]
-                 }
-             }
-             
-             for i in 0..<4{
-                teto_stage[brock_serch_y[i] + 20 - max_serch_y][brock_serch_x[i]]=teto_stage[brock_serch_y[i]][brock_serch_x[i]] * 10
-                 
-                 teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
-             }
-            print("max_serch_y = \(20 - max_serch_y)")
-            brock_draw()
-             var brock_Value = Int.random(in: 1 ... 7)
-             brock_create(brock_Value: brock_Value)
-             return
-         }
+
         
          print("min = \(min)")
          
          //minの距離-1分落とす
-         min -= 1
+         //min -= 1
+        for v in view.subviews{
+            if let v = v as? UIView, v.tag == 1{
+                v.removeFromSuperview()
+            }
+        }
         
-        print("min-1 = \(min)")
          for k in 0..<4{
              print("down")
             teto_stage[brock_serch_y[k]+min][brock_serch_x[k]] = teto_stage[brock_serch_y[k]][brock_serch_x[k]] * 10
@@ -600,6 +623,7 @@ class GameViewController: UIViewController {
          print("^^^^^^^^^^^^^^^^^")
          print(teto_stage)
         brock_draw()
+        brock_line_delete()
          var brock_Value = Int.random(in: 1 ... 7)
          brock_create(brock_Value: brock_Value)
         
