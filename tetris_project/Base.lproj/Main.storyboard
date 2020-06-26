@@ -220,17 +220,17 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7tv-Kq-uHo">
-                                <rect key="frame" x="17" y="40" width="10" height="630"/>
+                                <rect key="frame" x="17" y="40" width="10" height="600"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dT8-8y-fUL">
-                                <rect key="frame" x="17" y="670" width="380" height="10"/>
+                                <rect key="frame" x="17" y="640" width="380" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I3A-Hg-8gI">
-                                <rect key="frame" x="387" y="40" width="10" height="630"/>
+                                <rect key="frame" x="387" y="40" width="10" height="600"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>

@@ -39,6 +39,8 @@ class GameViewController: UIViewController {
     var Time = Timer()
     //制限時間の変数
     var timecounter = 60
+    
+    var idou_flg = 0
     //ゲームスタート時の時間
     //let StartTime: Date = Date()
     //ポーズ時の時間
@@ -353,11 +355,20 @@ class GameViewController: UIViewController {
     //制限時間カウント
     counter2 += 1
     print("counter2 = \(counter2)")
+    if(idou_flg == 1){
+        idou_flg = 0
+        br_count = 0
+        print("ridatu")
+        return
+    }
     brock_gravity()
+    
+/*
     if(counter2%21==0){
     var brock_Value = Int.random(in: 1 ... 7)
     brock_create(brock_Value: brock_Value)
     }
+ */
 }
 
 
@@ -379,6 +390,9 @@ class GameViewController: UIViewController {
                        print(teto_stage)
                        brock_fix()
                        br_count = 0
+                        var brock_Value = Int.random(in: 1 ... 7)
+                        brock_create(brock_Value: brock_Value)
+                    return
                    }//それ以外の場合
                    else{
                        //下のブロックが2である時、その場で固定、2になる
@@ -393,6 +407,12 @@ class GameViewController: UIViewController {
                           
                                bro_y[br_count-1] = y
                                bro_x[br_count-1] = x
+                        if(idou_flg == 1){
+                            idou_flg = 0
+                            br_count = 0
+                            print("ridatu")
+                            return
+                        }
                         if(br_count == 4){
                                print("bro_x\(bro_x),bro_y\(bro_y)copy")
                           
@@ -443,6 +463,7 @@ class GameViewController: UIViewController {
     }
     //左ボタン
     @IBAction func left(_ sender: Any) {
+        idou_flg = 1
         print("Push left Botan")
         brock_serch()
         for i in 0..<4{
@@ -460,15 +481,21 @@ class GameViewController: UIViewController {
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
         }
+        for v in view.subviews{
+            if let v = v as? UIView, v.tag == 1{
+                v.removeFromSuperview()
+            }
+        }
         
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]-1] = tmp
-            brock_draw()
         }
+        brock_draw()
         return
     }
     //右ボタン
     @IBAction func right(_ sender: Any) {
+        idou_flg = 1
         print("Push right Botan")
         brock_serch()
         for i in 0..<4{
@@ -486,11 +513,15 @@ class GameViewController: UIViewController {
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
         }
-        
+        for v in view.subviews{
+            if let v = v as? UIView, v.tag == 1{
+                v.removeFromSuperview()
+            }
+        }
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]+1] = tmp
-            brock_draw()
         }
+        brock_draw()
         return
     }
     //下ボタン
