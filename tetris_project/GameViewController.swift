@@ -44,8 +44,8 @@ class GameViewController: UIViewController {
     //ポーズ時の時間
     //var PauseTime: Date = Date()
     
-    //ステージ上のマス目12*21
-    var teto_stage = [[Int]](repeating:[Int](repeating:0,count: 12),count: 21)
+    //ステージ上のマス目12*20
+    var teto_stage = [[Int]](repeating:[Int](repeating:0,count: 12),count: 20)
     /*var masume : [[Int]] = [[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0]]
      
     */
@@ -239,9 +239,9 @@ class GameViewController: UIViewController {
     
     @objc func brock_draw(){
         for_i :for y in 0..<12{
-         for x in 0..<21{
+         for x in 0..<20{
             if(teto_stage[x][y] == 1 || teto_stage[x][y] == 10){
-                brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                brock = UIView(frame: CGRect(x:27+(y*30), y:40+(x*30), width:30, height:30))
                                    brock.tag = 1;
                                  let bgColor = UIColor.blue
                                  brock.backgroundColor = bgColor
@@ -253,7 +253,7 @@ class GameViewController: UIViewController {
                 
                 }
         if(teto_stage[x][y] == 2 || teto_stage[x][y] == 20){
-              brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+              brock = UIView(frame: CGRect(x:27+(y*30), y:40+(x*30), width:30, height:30))
                                  brock.tag = 1;
                                let bgColor = UIColor.red
                                brock.backgroundColor = bgColor
@@ -265,7 +265,7 @@ class GameViewController: UIViewController {
               
                   }
             if(teto_stage[x][y] == 3 || teto_stage[x][y] == 30){
-                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                   brock = UIView(frame: CGRect(x:27+(y*30), y:40+(x*30), width:30, height:30))
                                       brock.tag = 1;
                                     let bgColor = UIColor.green
                                     brock.backgroundColor = bgColor
@@ -277,7 +277,7 @@ class GameViewController: UIViewController {
                    
                        }
             if(teto_stage[x][y] == 4 || teto_stage[x][y] == 40){
-                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                   brock = UIView(frame: CGRect(x:27+(y*30), y:40+(x*30), width:30, height:30))
                                       brock.tag = 1;
                                     let bgColor = UIColor.yellow
                                     brock.backgroundColor = bgColor
@@ -289,7 +289,7 @@ class GameViewController: UIViewController {
                    
                        }
             if(teto_stage[x][y] == 5 || teto_stage[x][y] == 50){
-                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                   brock = UIView(frame: CGRect(x:27+(y*30), y:40+(x*30), width:30, height:30))
                                       brock.tag = 1;
                                     let bgColor = UIColor.orange
                                     brock.backgroundColor = bgColor
@@ -301,7 +301,7 @@ class GameViewController: UIViewController {
                    
                        }
             if(teto_stage[x][y] == 6 || teto_stage[x][y] == 60){
-                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                   brock = UIView(frame: CGRect(x:27+(y*30), y:40+(x*30), width:30, height:30))
                                       brock.tag = 1;
                                     let bgColor = UIColor.purple
                                     brock.backgroundColor = bgColor
@@ -313,7 +313,7 @@ class GameViewController: UIViewController {
                    
                        }
             if(teto_stage[x][y] == 7 || teto_stage[x][y] == 70){
-                   brock = UIView(frame: CGRect(x:(y*30), y:40+(x*30), width:30, height:30))
+                   brock = UIView(frame: CGRect(x:27+(y*30), y:40+(x*30), width:30, height:30))
                                       brock.tag = 1;
                                     let bgColor = UIColor.magenta
                                     brock.backgroundColor = bgColor
@@ -366,15 +366,15 @@ class GameViewController: UIViewController {
 @objc func brock_gravity(){
     var bro_y = [0,0,0,0]
     var bro_x = [0,0,0,0]
-    for_i :for var y in 0..<21{
+    for_i :for var y in 0..<20{
            for var x in 0..<12{
 
                //その配列にブロックがある時
-               if(teto_stage[20-y][11-x] < 10 && teto_stage[20-y][11-x] != 0){
+               if(teto_stage[19-y][11-x] < 10 && teto_stage[19-y][11-x] != 0){
                    print("Find!!")
                    //ブロックが一番下に来た時
                    if(y==0){
-                        teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
+                        teto_stage[19-y][11-x] = teto_stage[19-y][11-x] * 10
                        print("break1")
                        print(teto_stage)
                        brock_fix()
@@ -382,8 +382,8 @@ class GameViewController: UIViewController {
                    }//それ以外の場合
                    else{
                        //下のブロックが2である時、その場で固定、2になる
-                       if(teto_stage[20-y+1][11-x] >= 10){
-                       teto_stage[20-y][11-x] = teto_stage[20-y][11-x] * 10
+                       if(teto_stage[19-y+1][11-x] >= 10){
+                       teto_stage[19-y][11-x] = teto_stage[19-y][11-x] * 10
                            print("break2")
                            brock_fix()
                            br_count = 0
@@ -397,8 +397,8 @@ class GameViewController: UIViewController {
                                print("bro_x\(bro_x),bro_y\(bro_y)copy")
                           
                                for g in 0..<4{
-                           teto_stage[20-bro_y[g]+1][11-bro_x[g]] = teto_stage[20-bro_y[g]][11-bro_x[g]]
-                           teto_stage[20-bro_y[g]][11-bro_x[g]] = 0
+                           teto_stage[19-bro_y[g]+1][11-bro_x[g]] = teto_stage[19-bro_y[g]][11-bro_x[g]]
+                           teto_stage[19-bro_y[g]][11-bro_x[g]] = 0
                            
                                }
                            print("break3")
@@ -409,16 +409,16 @@ class GameViewController: UIViewController {
                }
            }
         }
-    //print(teto_stage)
+    print(teto_stage)
     }
 
     
     @objc func brock_fix(){
         print("fix")
-        for_i :for y in 0..<21{
-            for x in 0..<12{
-                if(teto_stage[20-y][11-x] < 10 && teto_stage[20-y][11-x] != 0){
-                    teto_stage[20-y][11-x]=teto_stage[20-y][11-x] * 10
+        for_i :for y in 0..<19{
+            for x in 0..<11{
+                if(teto_stage[19-y][11-x] < 10 && teto_stage[19-y][11-x] != 0){
+                    teto_stage[19-y][11-x]=teto_stage[19-y][11-x] * 10
                 }
             }
         }
@@ -427,8 +427,8 @@ class GameViewController: UIViewController {
     @objc func brock_serch(){
         var br_counter = 0
         print("brock serch")
-        for y in 0..<21{
-            for x in 0..<12{
+        for y in 0..<19{
+            for x in 0..<11{
                 if(teto_stage[y][x] < 10 && teto_stage[y][x] != 0){
                     if(br_counter == 4){
                         return
@@ -443,23 +443,59 @@ class GameViewController: UIViewController {
     }
     //左ボタン
     @IBAction func left(_ sender: Any) {
-        if(brock.frame.origin.x > 12
-            && brock.frame.origin.y < 640){
-        brock.frame.origin.x -= 30
+        print("Push left Botan")
+        brock_serch()
+        for i in 0..<4{
+            if(brock_serch_x[i] == 0){
+                return
+            }
+            if((teto_stage[brock_serch_y[i]][brock_serch_x[i]-1] != 0 && teto_stage[brock_serch_y[i]][brock_serch_x[i]-1] != teto_stage[brock_serch_y[i]][brock_serch_x[i]] )){
+                print("left_exist brock")
+                return
+            }
         }
-        print("afterRect: \(brock.frame)")
+        var tmp = 0
+        tmp = teto_stage[brock_serch_y[0]][brock_serch_x[0]]
+        
+        for i in 0..<4{
+            teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
+        }
+        
+        for i in 0..<4{
+            teto_stage[brock_serch_y[i]][brock_serch_x[i]-1] = tmp
+            brock_draw()
+        }
+        return
     }
     //右ボタン
     @IBAction func right(_ sender: Any) {
-        if(brock.frame.origin.x < 372 && brock.frame.origin.y < 640){
-        brock.frame.origin.x += 30
+        print("Push right Botan")
+        brock_serch()
+        for i in 0..<4{
+            if(brock_serch_x[i] == 11){
+                return
+            }
+            if((teto_stage[brock_serch_y[i]][brock_serch_x[i]+1] != 0 && teto_stage[brock_serch_y[i]][brock_serch_x[i]+1] != teto_stage[brock_serch_y[i]][brock_serch_x[i]] )){
+                print("right_exist brock")
+                return
+            }
         }
-        print("afterRect: \(brock.frame)")
+        var tmp = 0
+        tmp = teto_stage[brock_serch_y[0]][brock_serch_x[0]]
+        
+        for i in 0..<4{
+            teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
+        }
+        
+        for i in 0..<4{
+            teto_stage[brock_serch_y[i]][brock_serch_x[i]+1] = tmp
+            brock_draw()
+        }
+        return
     }
     //下ボタン
     @IBAction func under(_ sender: Any) {
         print("Push sita Botan")
-        print("down_action_start")
         print(teto_stage)
         //落ちてくるブロックの一番したと着地できる場所の距離
         var min = 100
@@ -483,7 +519,7 @@ class GameViewController: UIViewController {
          var yy = 0
         for i in 0..<4{
             print("i=\(i)")
-            for_i :for yy in brock_serch_y[i]..<21{
+            for_i :for yy in brock_serch_y[i]..<20{
                 print("a:i=\(i)/yy=\( yy)/min=\(min)/yy-bro=\( yy  -  brock_serch_y[i])")
                  if(teto_stage[yy][brock_serch_x[i]] >= 10 ){
                      sita_brock += 1
