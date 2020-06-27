@@ -11,7 +11,6 @@
 		5487A204247CE63000563826 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5487A203247CE63000563826 /* GameScene.sks */; };
 		5487A206247CE63000563826 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5487A205247CE63000563826 /* Actions.sks */; };
 		5487A208247CE63000563826 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5487A207247CE63000563826 /* GameScene.swift */; };
-		5487A20A247CE63000563826 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5487A209247CE63000563826 /* GameViewController.swift */; };
 		5487A20D247CE63000563826 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5487A20B247CE63000563826 /* Main.storyboard */; };
 		5487A20F247CE63600563826 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5487A20E247CE63600563826 /* Assets.xcassets */; };
 		5487A212247CE63600563826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5487A210247CE63600563826 /* LaunchScreen.storyboard */; };
@@ -22,6 +21,7 @@
 		67962CAD249519B0005616BB /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67962CAC249519B0005616BB /* ModalViewController.swift */; };
 		67962CAF2495BF24005616BB /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67962CAE2495BF24005616BB /* EndViewController.swift */; };
 		67A10A44248B7AD00091365F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A10A43248B7AD00091365F /* StartViewController.swift */; };
+		F4D2F59924A7FF43003E2F56 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D2F59824A7FF43003E2F56 /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,6 @@
 		5487A203247CE63000563826 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		5487A205247CE63000563826 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		5487A207247CE63000563826 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		5487A209247CE63000563826 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = /Users/kuritakatsurayuu/Documents/tetris_project/tetris_project/GameViewController.swift; sourceTree = "<absolute>"; };
 		5487A20C247CE63000563826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5487A20E247CE63600563826 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5487A211247CE63600563826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		67962CAC249519B0005616BB /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		67962CAE2495BF24005616BB /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
 		67A10A43248B7AD00091365F /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		F4D2F59824A7FF43003E2F56 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,13 +113,13 @@
 		5487A200247CE63000563826 /* tetris_project */ = {
 			isa = PBXGroup;
 			children = (
+				F4D2F59824A7FF43003E2F56 /* GameViewController.swift */,
 				6780B4B924A7FC0000672939 /* ModalSE.mp3 */,
 				6780B4C124A7FC9A00672939 /* bgm.mp3 */,
 				5487A201247CE63000563826 /* AppDelegate.swift */,
 				5487A203247CE63000563826 /* GameScene.sks */,
 				5487A205247CE63000563826 /* Actions.sks */,
 				5487A207247CE63000563826 /* GameScene.swift */,
-				5487A209247CE63000563826 /* GameViewController.swift */,
 				5487A20B247CE63000563826 /* Main.storyboard */,
 				67A10A43248B7AD00091365F /* StartViewController.swift */,
 				67962CAE2495BF24005616BB /* EndViewController.swift */,
@@ -291,7 +291,7 @@
 				5487A208247CE63000563826 /* GameScene.swift in Sources */,
 				67962CAD249519B0005616BB /* ModalViewController.swift in Sources */,
 				67A10A44248B7AD00091365F /* StartViewController.swift in Sources */,
-				5487A20A247CE63000563826 /* GameViewController.swift in Sources */,
+				F4D2F59924A7FF43003E2F56 /* GameViewController.swift in Sources */,
 				5487A202247CE63000563826 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

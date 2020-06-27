@@ -275,6 +275,11 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     
     
     @objc func brock_draw(){
+        for v in view.subviews{
+            if let v = v as? UIView, v.tag == 1{
+                v.removeFromSuperview()
+            }
+        }
         for_i :for y in 0..<12{
          for x in 0..<20{
             if(teto_stage[x][y] == 1 || teto_stage[x][y] == 10){
@@ -369,7 +374,6 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
 //重力
  @objc func gravity() {
     
-     
     for v in view.subviews{
         if let v = v as? UIView, v.tag == 1{
             v.removeFromSuperview()
@@ -377,8 +381,6 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     }
     
     brock_draw()
-    
-    
     
     counter2 += 1
     print("counter2 = \(counter2)")
@@ -470,7 +472,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                }
            }
         }
-    print(teto_stage)
+    //print(teto_stage)
     }
 
     
@@ -504,33 +506,35 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     }
     
     @objc func brock_line_delete(){
-        var line_flg = 0
-        print("delete_line")
-        for y in 0..<20{
-            for x in 0..<12{
-                if(teto_stage[y][x] >= 10){
-                    line_flg += 1
-                    print("line_flg\(line_flg)")
-                    if(line_flg == 12){
-                        print("delete_start")
-                        for yy in 0..<20{
-                            for xx in 0..<12{
-                                teto_stage[19 - y][11 - xx] = teto_stage[19 - y - 1][11 - x]
-                            }
-                        }
-                    }
-                    for v in view.subviews{
-                        if let v = v as? UIView, v.tag == 1{
-                            v.removeFromSuperview()
-                        }
-                    }
-                    brock_draw()
-                    
-                }
-            }
-            line_flg = 0
-        }
-    }
+           var line_flg = 0
+           print("delete_line")
+           for y in 0..<20{
+               for x in 0..<12{
+                   if(teto_stage[19 - y][x] >= 10){
+                       line_flg += 1
+                       print("line_flg\(line_flg)")
+                       if(line_flg == 12){
+                           print("delete_start")
+                           for yy in 0..<19 - y{
+                               for xx in 0..<12{
+                                   teto_stage[19 - y - yy][xx] = teto_stage[19 - y - yy - 1][xx]
+                                   print("y = \(y) x = \(x) yy = \(yy) xx = \(xx) y - yy = \(y-yy)")
+                                   //print("19 - yy = \(19-yy)")
+                               }
+                           }
+                       }
+                       for v in view.subviews{
+                           if let v = v as? UIView, v.tag == 1{
+                               v.removeFromSuperview()
+                           }
+                       }
+                   }
+               }
+               line_flg = 0
+           }
+        print(teto_stage)
+       brock_draw()
+       }
     
     //左ボタン
     @IBAction func left(_ sender: Any) {
@@ -555,11 +559,13 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
         }
+/*
         for v in view.subviews{
             if let v = v as? UIView, v.tag == 1{
                 v.removeFromSuperview()
             }
         }
+ */
         
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]-1] = tmp
@@ -592,11 +598,13 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
         }
+/*
         for v in view.subviews{
             if let v = v as? UIView, v.tag == 1{
                 v.removeFromSuperview()
             }
         }
+*/
         
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]+1] = tmp
@@ -608,7 +616,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     //下ボタン
     @IBAction func under(_ sender: Any) {
         print("Push sita Botan")
-        print(teto_stage)
+        //print(teto_stage)
         //落ちてくるブロックの一番したと着地できる場所の距離
         var min = 100
         var sita_brock = 0
@@ -650,14 +658,21 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
          
          //minの距離-1分落とす
          //min -= 1
+/*
         for v in view.subviews{
             if let v = v as? UIView, v.tag == 1{
                 v.removeFromSuperview()
             }
         }
+ */
+        
         
          for k in 0..<4{
              print("down")
+            if(min == 0){
+                brock_fix()
+                break
+            }
             teto_stage[brock_serch_y[k]+min][brock_serch_x[k]] = teto_stage[brock_serch_y[k]][brock_serch_x[k]] * 10
              teto_stage[brock_serch_y[k]][brock_serch_x[k]] = 0
              
