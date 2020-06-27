@@ -15,9 +15,11 @@ import UIKit
 import SwiftUI
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 var animator : UIDynamicAnimator!
-
+var audioPlayerBGM:AVAudioPlayer!
+var audioPlayerSE:AVAudioPlayer!
 var brock_Value = Int.random(in: 1 ... 7)
 
 var br_count = 0
@@ -25,9 +27,10 @@ var br_count = 0
 var brock_serch_y = [0,0,0,0]
 var brock_serch_x = [0,0,0,0]
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController,AVAudioPlayerDelegate {
     
     @IBOutlet weak var TimeLabel: UILabel!
+    
     
     //ブロックを定義
     var brock : UIView!
@@ -37,10 +40,14 @@ class GameViewController: UIViewController {
     var counter:Int = 0
     //test用の変数2
     var counter2:Int = 0
-    //タイマー用変数
+    //重力タイマー用変数
+    var gTime = Timer()
+    //制限時間タイマー用変数
     var Time = Timer()
     //制限時間の変数
     var timecounter = 60
+    //pauseからの戻りを判定する変数
+    var Backfrompause :Bool!
     
     var idou_flg = 0
     //ゲームスタート時の時間
@@ -131,10 +138,36 @@ class GameViewController: UIViewController {
         //let brock_Value = Int.random(in: 1 ... 7)
         brock_create(brock_Value: brock_Value)
 
-//時間
-        Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+//重力時間
+        gTime = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+//制限時間
+        Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.timer), userInfo: nil, repeats: true)
 
+        playBGM(name : "bgm")
+        //bgm読み込み
     }
+ 
+    
+    override func viewWillAppear(_ animated: Bool) {
+              super.viewWillAppear(animated)
+
+           Bfp()
+        
+       }
+    
+       func Bfp(){
+       if (Backfrompause == true){
+        playSE(name : "ModalSE")
+        audioPlayerBGM.play()
+        //bgmを再開
+        Backfrompause = false
+//重力時間(再開用)
+        gTime = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+//制限時間(再開用)
+        Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.timer), userInfo: nil, repeats: true)
+       }
+    }
+    
     
 //ブロック生成
     @objc func brock_create(brock_Value:Int){
@@ -337,8 +370,6 @@ class GameViewController: UIViewController {
  @objc func gravity() {
     
      
-    TimeLabel.text = String(timecounter)
-    //制限時間の表示
     for v in view.subviews{
         if let v = v as? UIView, v.tag == 1{
             v.removeFromSuperview()
@@ -347,15 +378,8 @@ class GameViewController: UIViewController {
     
     brock_draw()
     
-    if(timecounter == 0){
-        Time.invalidate()
-        self.performSegue(withIdentifier: "moveEnd", sender: self)
-    }
-    //0秒になったらタイマーを停止して終了画面へ移動
     
-     timecounter -= 1
-     timecounter += 1
-    //制限時間カウント
+    
     counter2 += 1
     print("counter2 = \(counter2)")
     
@@ -366,13 +390,31 @@ class GameViewController: UIViewController {
         for x in 0..<11{
             if(teto_stage[y][x] >= 10){
                 print("Game Over")
+                gTime.invalidate()
                 Time.invalidate()
+                audioPlayerBGM.stop()
                 self.performSegue(withIdentifier: "moveEnd", sender: self)
             }
         }
     }
 }
 
+//制限時間
+@objc func timer(){
+        TimeLabel.text = String(timecounter)
+            //制限時間の表示
+
+        if(timecounter == 0){
+                gTime.invalidate()
+                 Time.invalidate()
+                audioPlayerBGM.stop()
+                self.performSegue(withIdentifier: "moveEnd", sender: self)
+            }
+         //0秒になったらタイマーを停止して終了画面へ移動
+
+        timecounter -= 1
+            //制限時間カウント
+    }
 
 
 
@@ -637,15 +679,59 @@ class GameViewController: UIViewController {
     
     
     @IBAction func pause(_ sender: Any) {
+        gTime.invalidate()
         Time.invalidate()
-    //タイマーの停止?
+        //タイマーの停止
+        audioPlayerBGM.pause()
+        //bgm一時停止
+        playSE(name : "ModalSE")
+        
     self.performSegue(withIdentifier: "moveModal", sender: self)
     }
     //pause画面を表示
     
     
-    
-    
+    func playBGM(name: String) {
+        guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+            print("音源ファイルが見つかりません")
+            return
+        }//bgm.mp3までのパスを取得
+
+        do {
+            
+            audioPlayerBGM = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            //パスからBGM再生のURLを作成
+            // AVAudioPlayerをインスタンス化
+
+            
+            audioPlayerBGM.play()
+            // URLを実行
+            
+        } catch {
+            //エラーが発生した場合の処理
+        }
+    }
+
+    func playSE(name: String) {
+            guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+                print("音源ファイルが見つかりません")
+                return
+            }//ModalSE.mp3までのパスを取得
+
+            do {
+                
+                audioPlayerSE = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                //パスからBGM再生のURLを作成
+                // AVAudioPlayerをインスタンス化
+
+                
+                audioPlayerSE.play()
+                // URLを実行
+                
+            } catch {
+                //エラーが発生した場合の処理
+            }
         
     
+}
 }

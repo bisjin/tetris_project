@@ -25,9 +25,12 @@ class ModalViewController: UIViewController {
     
 
     @IBAction func backgame(_ sender: Any) {
+        let vc = self.presentingViewController as! GameViewController
+        //vcをGameViewControllerにキャスト
+        vc.Backfrompause = true
         dismiss(animated: true, completion: nil)
     }
-    //ゲームを再開(未完成)
+    //ゲームを再開
     
     @IBAction func retry(_ sender: Any) {
         self.performSegue(withIdentifier: "moveretry", sender: self)
@@ -42,14 +45,6 @@ class ModalViewController: UIViewController {
     //pauseからメニューへ移動
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }

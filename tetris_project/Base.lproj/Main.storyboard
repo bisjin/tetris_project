@@ -15,16 +15,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スコアランキング" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agN-Qn-sIV">
-                                <rect key="frame" x="46" y="197" width="322" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCORE RANKING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agN-Qn-sIV">
+                                <rect key="frame" x="53.5" y="197" width="307" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fmf-g9-K6c">
-                                <rect key="frame" x="343" y="20" width="51" height="42"/>
+                                <rect key="frame" x="340" y="20" width="54" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="戻る">
+                                <state key="normal" title="Back">
                                     <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -62,9 +62,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSh-d5-4o3">
-                                <rect key="frame" x="343" y="20" width="51" height="42"/>
+                                <rect key="frame" x="340" y="20" width="54" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="戻る">
+                                <state key="normal" title="Back">
                                     <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -96,14 +96,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTf-7C-t5J">
-                                <rect key="frame" x="82" y="446" width="250" height="50"/>
+                                <rect key="frame" x="82" y="386" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="QP6-HY-h2Y"/>
                                     <constraint firstAttribute="width" constant="250" id="cxM-yX-e21"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="ス タ ー ト">
+                                <state key="normal" title="S T A R T">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -117,14 +117,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyG-Sd-PZc">
-                                <rect key="frame" x="82" y="516" width="250" height="50"/>
+                                <rect key="frame" x="82" y="466" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="ch1-Gg-UUj"/>
                                     <constraint firstAttribute="height" constant="50" id="ytT-eS-LdT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="遊  び  方">
+                                <state key="normal" title="遊び方">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -137,14 +137,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fba-ar-nNy">
-                                <rect key="frame" x="82" y="586" width="250" height="50"/>
+                                <rect key="frame" x="82" y="546" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Pbc-SS-vfA"/>
                                     <constraint firstAttribute="width" constant="250" id="gUI-32-mCO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="スコアランキング">
+                                <state key="normal" title="SCORE RANKING">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -157,21 +157,20 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テトリス(仮)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uda-M2-sWB">
-                                <rect key="frame" x="65" y="241" width="284" height="60"/>
+                                <rect key="frame" x="65" y="151" width="284" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YyG-Sd-PZc" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="2Np-8K-pa3"/>
-                            <constraint firstItem="vTf-7C-t5J" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="50" id="3zM-cI-Gcs"/>
-                            <constraint firstItem="fba-ar-nNy" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="190" id="6wQ-Bx-whB"/>
+                            <constraint firstItem="vTf-7C-t5J" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="-10" id="3zM-cI-Gcs"/>
+                            <constraint firstItem="fba-ar-nNy" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="150" id="6wQ-Bx-whB"/>
                             <constraint firstItem="fba-ar-nNy" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="ALB-Ke-e0d"/>
-                            <constraint firstItem="YyG-Sd-PZc" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="120" id="TJ2-Y5-7ux"/>
+                            <constraint firstItem="YyG-Sd-PZc" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="70" id="TJ2-Y5-7ux"/>
                             <constraint firstItem="Uda-M2-sWB" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="TkS-7w-H5o"/>
-                            <constraint firstItem="Uda-M2-sWB" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="-150" id="XrF-jV-zpr"/>
+                            <constraint firstItem="Uda-M2-sWB" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="-240" id="XrF-jV-zpr"/>
                             <constraint firstItem="vTf-7C-t5J" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="euk-Me-O3u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
@@ -247,8 +246,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32a-gR-pFm">
-                                <rect key="frame" x="10" y="10" width="31" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <rect key="frame" x="190.5" y="10" width="33.5" height="32.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -408,10 +407,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enX-7B-EuY">
-                                <rect key="frame" x="333" y="5" width="76" height="42"/>
+                                <rect key="frame" x="332" y="5" width="77" height="42"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="ポーズ">
+                                <state key="normal" title="PAUSE">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -428,7 +427,7 @@
                         <constraints>
                             <constraint firstItem="32a-gR-pFm" firstAttribute="top" secondItem="hdd-nI-Y3l" secondAttribute="top" constant="10" id="enO-NH-AeJ"/>
                             <constraint firstItem="enX-7B-EuY" firstAttribute="top" secondItem="hdd-nI-Y3l" secondAttribute="top" constant="5" id="hHF-Jz-jEZ"/>
-                            <constraint firstItem="32a-gR-pFm" firstAttribute="leading" secondItem="hdd-nI-Y3l" secondAttribute="leading" constant="10" id="wCa-ee-URU"/>
+                            <constraint firstItem="32a-gR-pFm" firstAttribute="centerX" secondItem="rrs-2C-bzk" secondAttribute="centerX" id="nto-GZ-0B7"/>
                             <constraint firstItem="hdd-nI-Y3l" firstAttribute="trailing" secondItem="enX-7B-EuY" secondAttribute="trailing" constant="5" id="wLC-am-Dec"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hdd-nI-Y3l"/>
@@ -453,8 +452,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="終了画面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyM-JM-muf">
-                                <rect key="frame" x="126.5" y="197" width="161" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyM-JM-muf">
+                                <rect key="frame" x="97" y="197" width="220" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -489,13 +488,13 @@
         <!--Modal View Controller-->
         <scene sceneID="Dsi-iU-A2v">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="LdG-lg-Y6N" customClass="ModalViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="currentContext" id="LdG-lg-Y6N" customClass="ModalViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bb4-qc-lC7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk9-xl-cov">
-                                <rect key="frame" x="77" y="308" width="260" height="280"/>
+                                <rect key="frame" x="77" y="281" width="260" height="280"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyf-ug-lAX">
                                         <rect key="frame" x="40" y="220" width="180" height="40"/>
@@ -503,7 +502,7 @@
                                             <constraint firstAttribute="width" constant="180" id="H92-yT-6t0"/>
                                             <constraint firstAttribute="height" constant="40" id="mal-oY-HaN"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <state key="normal" title="メニューに戻る">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -518,7 +517,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Kii-MI-ZI3"/>
                                             <constraint firstAttribute="width" constant="180" id="T5L-aG-600"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <state key="normal" title="再     開">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -543,12 +542,12 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="535-wG-ans">
-                                <rect key="frame" x="117" y="428" width="180" height="40"/>
+                                <rect key="frame" x="117" y="401" width="180" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="3ZS-B7-rzi"/>
                                     <constraint firstAttribute="height" constant="40" id="aO2-8r-F9O"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <state key="normal" title="リ ト ラ イ">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -557,7 +556,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAUSE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdv-K9-LN3">
-                                <rect key="frame" x="148" y="226.5" width="118" height="43"/>
+                                <rect key="frame" x="148" y="199.5" width="118" height="43"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -585,8 +584,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Fot-m6-ShK"/>
-        <segue reference="qQF-ws-bQX"/>
+        <segue reference="Sjz-Ao-ow5"/>
         <segue reference="1hI-TI-vRf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
