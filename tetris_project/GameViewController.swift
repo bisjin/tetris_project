@@ -713,7 +713,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     }
 
     func playSE(name: String) {
-            guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+        guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
                 print("音源ファイルが見つかりません")
                 return
             }//ModalSE.mp3までのパスを取得
