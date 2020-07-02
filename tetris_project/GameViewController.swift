@@ -512,7 +512,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                for x in 0..<12{
                    if(teto_stage[19 - y][x] >= 10){
                        line_flg += 1
-                       print("line_flg\(line_flg)")
+                       //print("line_flg\(line_flg)")
                        if(line_flg == 12){
                            print("delete_start")
                            for yy in 0..<19 - y{
@@ -665,18 +665,22 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
             }
         }
  */
+        var tmp_color = 0;
+        tmp_color = teto_stage[brock_serch_y[0]][brock_serch_x[0]]
         
-        
+        print("brock_serch_x\(brock_serch_x),brock_serch_y\(brock_serch_y)copy")
          for k in 0..<4{
              print("down")
             if(min == 0){
+                print("break_min == 0")
                 brock_fix()
                 break
             }
-            teto_stage[brock_serch_y[k]+min][brock_serch_x[k]] = teto_stage[brock_serch_y[k]][brock_serch_x[k]] * 10
-             teto_stage[brock_serch_y[k]][brock_serch_x[k]] = 0
-             
+            teto_stage[brock_serch_y[k]][brock_serch_x[k]] = 0
+            teto_stage[brock_serch_y[k]+min][brock_serch_x[k]] = tmp_color * 10
+            
          }
+         
          print("^^^^^^^^^^^^^^^^^")
          print(teto_stage)
         brock_draw()
