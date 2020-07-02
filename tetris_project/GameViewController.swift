@@ -50,6 +50,10 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     var Backfrompause :Bool!
     
     var idou_flg = 0
+    
+    //回転数
+    var turn_counter = 0
+    
     //ゲームスタート時の時間
     //let StartTime: Date = Date()
     //ポーズ時の時間
@@ -67,68 +71,164 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     [0,1,0,0],
     [0,1,0,0],
     [0,1,0,0],
-    [0,1,0,0]]
-    
-   
-    var yoko_bar = [
+    [0,1,0,0],
+    //1
     [0,0,0,0],
     [0,0,0,0],
     [1,1,1,1],
-    [0,0,0,0]]
+    [0,0,0,0],
+    //2
+    [0,1,0,0],
+    [0,1,0,0],
+    [0,1,0,0],
+    [0,1,0,0],
+    //3
+    [0,0,0,0],
+    [0,0,0,0],
+    [1,1,1,1],
+    [0,0,0,0]
+    //4
+    ]
+    
     
     var Tzi = [
        [0,0,0,0],
        [0,1,0,0],
        [1,1,1,0],
-       [0,0,0,0]]
-       
-    var Tzi_yoko1 = [
        [0,0,0,0],
+       //1
        [0,1,0,0],
        [0,1,1,0],
-       [0,1,0,0]]
-    
-    var Tzi_yoko2 = [
-        [0,0,0,0],
-        [1,1,1,0],
-        [0,1,0,0],
-        [0,0,0,0]]
-    
-    var Tzi_yoko3 = [
-        [0,0,0,0],
-        [0,0,1,0],
-        [0,1,1,0],
-        [0,0,1,0]]
+       [0,1,0,0],
+       [0,0,0,0],
+       //2
+       [0,0,0,0],
+       [1,1,1,0],
+       [0,1,0,0],
+       [0,0,0,0],
+       //3
+       [0,0,1,0],
+       [0,1,1,0],
+       [0,0,1,0],
+       [0,0,0,0]
+        //4
+    ]
+       
     
     var Lzi = [
-          [0,1,0,0],
-          [0,1,0,0],
-          [0,1,1,0],
-          [0,0,0,0]]
+        [0,1,0,0],
+        [0,1,0,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        //1
+        [0,0,0,0],
+        [1,1,1,0],
+        [1,0,0,0],
+        [0,0,0,0],
+        //2
+        [0,1,1,0],
+        [0,0,1,0],
+        [0,0,1,0],
+        [0,0,0,0],
+        //3
+        [0,0,1,0],
+        [1,1,1,0],
+        [0,0,0,0],
+        [0,0,0,0]
+        //4
+        ]
     
     var Jzi = [
-             [0,0,1,0],
-             [0,0,1,0],
-             [0,1,1,0],
-             [0,0,0,0]]
+        [0,0,1,0],
+        [0,0,1,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        //1
+        [0,1,0,0],
+        [0,1,1,1],
+        [0,0,0,0],
+        [0,0,0,0],
+        //2
+        [0,1,1,0],
+        [0,1,0,0],
+        [0,1,0,0],
+        [0,0,0,0],
+        //3
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]
+        //4
+        ]
     
     var Szi = [
-            [0,0,0,0],
-            [0,1,1,0],
-            [1,1,0,0],
-            [0,0,0,0]]
+        [0,0,0,0],
+        [0,1,1,0],
+        [1,1,0,0],
+        [0,0,0,0],
+        //1
+        [0,1,0,0],
+        [0,1,1,0],
+        [0,0,1,0],
+        [0,0,0,0],
+        //2
+        [0,0,0,0],
+        [0,1,1,0],
+        [1,1,0,0],
+        [0,0,0,0],
+        //3
+        [0,1,0,0],
+        [0,1,1,0],
+        [0,0,1,0],
+        [0,0,0,0]
+        //4
+        ]
     
     var Zzi = [
-            [0,0,0,0],
-            [0,1,1,0],
-            [0,0,1,1],
-            [0,0,0,0]]
+        [0,0,0,0],
+        [0,1,1,0],
+        [0,0,1,1],
+        [0,0,0,0],
+        //1
+        [0,0,1,0],
+        [0,1,1,0],
+        [0,1,0,0],
+        [0,0,0,0],
+        //2
+        [0,0,0,0],
+        [0,1,1,0],
+        [0,0,1,1],
+        [0,0,0,0],
+        //3
+        [0,0,1,0],
+        [0,1,1,0],
+        [0,1,0,0],
+        [0,0,0,0]
+        //4
+    ]
     
     var Ozi = [
-            [0,0,0,0],
-            [0,1,1,0],
-            [0,1,1,0],
-            [0,0,0,0]]
+        [0,0,0,0],
+        [0,1,1,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        //1
+        [0,0,0,0],
+        [0,1,1,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        //2
+        [0,0,0,0],
+        [0,1,1,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        //3
+        [0,0,0,0],
+        [0,1,1,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        //4
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,106 +273,77 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     @objc func brock_create(brock_Value:Int){
         counter2 = 0
         if(brock_Value == 1){
-            brock1()
+            for i in 0..<4{
+                for j in 0..<4{
+                     if(bar[i][j] == 1){
+                        teto_stage[4-i][8-j] = 1
+                     }
+                }
+            }
+            return
         }
         if(brock_Value == 2){
-            brock2()
+             for i in 0..<4{
+                       for j in 0..<4{
+                            if(Tzi[i][j] == 1){
+                               teto_stage[4-i][8-j] = 2
+                            }
+                       }
+                   }
+            return
         }
         if(brock_Value == 3){
-            brock3()
+             for i in 0..<4{
+                          for j in 0..<4{
+                               if(Lzi[i][j] == 1){
+                                  teto_stage[4-i][8-j] = 3
+                               }
+                          }
+                      }
+            return
         }
         if(brock_Value == 4){
-            brock4()
+            for i in 0..<4{
+                for j in 0..<4{
+                     if(Jzi[i][j] == 1){
+                        teto_stage[4-i][8-j] = 4
+                     }
+                }
+            }
+            return
         }
         if(brock_Value == 5){
-            brock5()
+             for i in 0..<4{
+                          for j in 0..<4{
+                               if(Szi[i][j] == 1){
+                                  teto_stage[4-i][8-j] = 5
+                               }
+                          }
+                      }
+            return
         }
         if(brock_Value == 6){
-            brock6()
+            for i in 0..<4{
+                for j in 0..<4{
+                     if(Zzi[i][j] == 1){
+                        teto_stage[4-i][8-j] = 6
+                     }
+                }
+            }
+            return
         }
         if(brock_Value == 7){
-            brock7()
+            for i in 0..<4{
+                for j in 0..<4{
+                     if(Ozi[i][j] == 1){
+                        teto_stage[4-i][8-j] = 7
+                     }
+                }
+            }
+            return
         }
        
     }
-    
-    /*ブロックを配列の形式で表示
-    @objc func brock_array(){
-        for(){
-    
-        }
-    }*/
-     //I字ブロック(blue)
-     @objc func brock1(){
-        for i in 0..<4{
-            for j in 0..<4{
-                 if(bar[i][j] == 1){
-                    teto_stage[4-i][8-j] = 1
-                 }
-            }
-        }
-    }
-    //T字ブロック(red)
-     @objc func brock2(){
-        for i in 0..<4{
-            for j in 0..<4{
-                 if(Tzi[i][j] == 1){
-                    teto_stage[4-i][8-j] = 2
-                 }
-            }
-        }
-    }
-    //L字ブロック(green)
-        @objc func brock3(){
-           for i in 0..<4{
-               for j in 0..<4{
-                    if(Lzi[i][j] == 1){
-                       teto_stage[4-i][8-j] = 3
-                    }
-               }
-           }
-       }
-    //J字ブロック(yellow)
-        @objc func brock4(){
-           for i in 0..<4{
-               for j in 0..<4{
-                    if(Jzi[i][j] == 1){
-                       teto_stage[4-i][8-j] = 4
-                    }
-               }
-           }
-       }
-    //S字ブロック(orange)
-        @objc func brock5(){
-           for i in 0..<4{
-               for j in 0..<4{
-                    if(Szi[i][j] == 1){
-                       teto_stage[4-i][8-j] = 5
-                    }
-               }
-           }
-       }
-    //Z字ブロック(purple)
-        @objc func brock6(){
-           for i in 0..<4{
-               for j in 0..<4{
-                    if(Zzi[i][j] == 1){
-                       teto_stage[4-i][8-j] = 6
-                    }
-               }
-           }
-       }
-    //O字ブロック(magenta)
-        @objc func brock7(){
-           for i in 0..<4{
-               for j in 0..<4{
-                    if(Ozi[i][j] == 1){
-                       teto_stage[4-i][8-j] = 7
-                    }
-               }
-           }
-       }
-    
     
     @objc func brock_draw(){
         for v in view.subviews{
@@ -691,9 +762,14 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         
     }
     
-    //@IBAction func leftturn(_ sender: Any) {}
-    
-    //@IBAction func rightturn(_ sender: Any) {}
+    @IBAction func turn(_ sender: Any) {
+        print("push turn button")
+        if(turn_counter == 3){
+            turn_counter = 0;
+        }
+        turn_counter += 1;
+        brock_draw()
+    }
     
     
     
