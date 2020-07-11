@@ -18,8 +18,8 @@ import GameplayKit
 import AVFoundation
 
 var animator : UIDynamicAnimator!
-var audioPlayerBGM:AVAudioPlayer!
-var audioPlayerSE:AVAudioPlayer!
+var audioPlayerBGM_G:AVAudioPlayer!
+var audioPlayerSE_G:AVAudioPlayer!
 var brock_Value = Int.random(in: 1 ... 7)
 
 var br_count = 0
@@ -243,8 +243,10 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
 //制限時間
         Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.timer), userInfo: nil, repeats: true)
 
-        playBGM(name : "bgm")
+        playBGM(name : "GameBGM")
         //bgm読み込み
+        audioPlayerBGM_G.numberOfLoops = -1
+        //ループ
     }
  
     
@@ -258,7 +260,8 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
        func Bfp(){
        if (Backfrompause == true){
         playSE(name : "ModalSE")
-        audioPlayerBGM.play()
+        audioPlayerBGM_G.play()
+        audioPlayerBGM_G.numberOfLoops = -1
         //bgmを再開
         Backfrompause = false
 //重力時間(再開用)
@@ -465,7 +468,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                 print("Game Over")
                 gTime.invalidate()
                 Time.invalidate()
-                audioPlayerBGM.stop()
+                audioPlayerBGM_G.stop()
                 self.performSegue(withIdentifier: "moveEnd", sender: self)
             }
         }
@@ -480,7 +483,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         if(timecounter == 0){
                 gTime.invalidate()
                  Time.invalidate()
-                audioPlayerBGM.stop()
+                audioPlayerBGM_G.stop()
                 self.performSegue(withIdentifier: "moveEnd", sender: self)
             }
          //0秒になったらタイマーを停止して終了画面へ移動
@@ -777,7 +780,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         gTime.invalidate()
         Time.invalidate()
         //タイマーの停止
-        audioPlayerBGM.pause()
+        audioPlayerBGM_G.pause()
         //bgm一時停止
         playSE(name : "ModalSE")
         
@@ -790,16 +793,16 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
             print("音源ファイルが見つかりません")
             return
-        }//bgm.mp3までのパスを取得
+        }//GameBGM.mp3までのパスを取得
 
         do {
             
-            audioPlayerBGM = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            audioPlayerBGM_G = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             //パスからBGM再生のURLを作成
             // AVAudioPlayerをインスタンス化
 
             
-            audioPlayerBGM.play()
+            audioPlayerBGM_G.play()
             // URLを実行
             
         } catch {
@@ -815,12 +818,12 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
 
             do {
                 
-                audioPlayerSE = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayerSE_G = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
                 //パスからBGM再生のURLを作成
                 // AVAudioPlayerをインスタンス化
 
                 
-                audioPlayerSE.play()
+                audioPlayerSE_G.play()
                 // URLを実行
                 
             } catch {

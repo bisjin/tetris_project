@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Start View Controller-->
+        <!--Score Ranking View Controller-->
         <scene sceneID="gI6-EI-TEp">
             <objects>
-                <viewController id="4h4-7e-rmd" customClass="StartViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4h4-7e-rmd" customClass="ScoreRankingViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o0X-Fe-Hgh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
         <!--howtoplay-->
         <scene sceneID="t8a-tq-NMV">
             <objects>
-                <viewController title="howtoplay" id="xNa-p2-tor" customClass="StartViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="howtoplay" id="xNa-p2-tor" customClass="HowtoViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hrW-6R-EaA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +91,7 @@
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="StartViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -162,12 +162,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="音楽：魔王魂" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JFt-7e-O67">
+                                <rect key="frame" x="305" y="786" width="104" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="YyG-Sd-PZc" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="2Np-8K-pa3"/>
                             <constraint firstItem="vTf-7C-t5J" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="-10" id="3zM-cI-Gcs"/>
                             <constraint firstItem="fba-ar-nNy" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="150" id="6wQ-Bx-whB"/>
                             <constraint firstItem="fba-ar-nNy" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="ALB-Ke-e0d"/>
+                            <constraint firstItem="JFt-7e-O67" firstAttribute="bottom" secondItem="4qk-I5-YsI" secondAttribute="bottom" id="DTS-Dx-nvv"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="JFt-7e-O67" secondAttribute="trailing" constant="5" id="EeC-Pv-zfd"/>
                             <constraint firstItem="YyG-Sd-PZc" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="70" id="TJ2-Y5-7ux"/>
                             <constraint firstItem="Uda-M2-sWB" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="TkS-7w-H5o"/>
                             <constraint firstItem="Uda-M2-sWB" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="-240" id="XrF-jV-zpr"/>
@@ -596,7 +604,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qQF-ws-bQX"/>
+        <segue reference="Sjz-Ao-ow5"/>
         <segue reference="1hI-TI-vRf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
