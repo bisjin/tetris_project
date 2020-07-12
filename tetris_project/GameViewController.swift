@@ -30,6 +30,8 @@ var brock_serch_x = [0,0,0,0]
 var brock_turn_y = [0,0,0,0]
 var brock_turn_x = [0,0,0,0]
 
+var tmp_color = 0;
+
 class GameViewController: UIViewController,AVAudioPlayerDelegate {
     
     @IBOutlet weak var TimeLabel: UILabel!
@@ -236,7 +238,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        /*
              print(bar)
              for i in 0..<16{
                  for n in 0..<4{
@@ -249,7 +251,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                      print("Tzi i=\(i)/n=\(n) Tzi[i][n]=\(Tzi[i][n])")
                  }
              }
-             
+             */
         
         //ブロックを生成
         //生成の基本関数
@@ -293,34 +295,17 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
  //ブロック生成
  @objc func brock_create(brock_Value:Int){
      counter2 = 0
-     brock_serch()
-     var brock_Value = 1
-     var g = 0
-     if(brock_Value == 1){
-         //回転先を確認
-         for k in 0..<4{
-             print("turn_counter * 4 + k = \(turn_counter * 4 + k)")
-         }
-         
-         for n in 0..<4{
-             for r in 0..<4{
-                if(bar[n][turn_counter * 4 + r] == 1){
-                 if(teto_stage[brock_serch_x[0] + n] [brock_serch_y[0] + r ] == 0 || teto_stage[brock_serch_x[0] + n] [brock_serch_y[0] + r ] == brock_Value ){
-                         brock_turn_x[g] = brock_serch_x[g]+n
-                         brock_turn_y[g] = brock_serch_y[g]+r
-                         g += 1
-                     }
-                  }
-                }
-             }
-         //回転先に描画
-         if(g == 4){
-         for i in 0..<4{
-            teto_stage[brock_turn_x[i]][brock_turn_y[i]] = brock_Value
-             }
-         }
-         return
-     }
+        if(brock_Value == 1){
+            for i in 0..<4{
+                        for j in 0..<4{
+                            if(bar[i][j] == 1){
+                                teto_stage[4-i][8-j] = 1
+                            }
+                        }
+                    }
+            return
+        }
+    
         if(brock_Value == 2){
              for i in 0..<4{
                        for j in 0..<4{
@@ -803,11 +788,37 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     
     @IBAction func turn(_ sender: Any) {
         print("push turn button")
-        if(turn_counter == 3){
-            turn_counter = 0;
+        var tmppp = 0
+        //回転の原点とりあえず3つ目
+        var center = 2
+        brock_serch()
+        tmppp = teto_stage[brock_serch_y[0]][brock_serch_x[0]]
+        for i in 0..<4{
+            brock_turn_x[i] = brock_serch_y[i] - brock_serch_y[2]
+            brock_turn_y[i] = (brock_serch_x[i] - brock_serch_x[2]) * -1
+            if(i==2){
+                brock_turn_x[2] = 0
+                brock_turn_y[2] = 0
+            }
         }
-        turn_counter += 1;
-        print("turn_counter = \(turn_counter)")
+        print("brock_serch_x = \( brock_serch_x)  brock_serch_y = \(brock_serch_y) brock_turn_x = \(brock_turn_x) brock_turn_y = \( brock_turn_y) ")
+        for a in 0..<4{
+            print("move_point_x = \(brock_serch_x[2] +  brock_turn_x[a])move_point_y = \((brock_serch_y[2] +  brock_turn_y[a]))")
+        }
+            for c in 0..<4{
+                if(brock_serch_y[2] + brock_turn_y[c] < 0 || brock_serch_y[2] + brock_turn_y[c] > 19 || brock_serch_x[2] + brock_turn_x[c] < 0 || brock_serch_x[2] + brock_turn_x[c] >= 11 || teto_stage[brock_serch_y[2] +  brock_turn_y[c]][brock_serch_x[2] + brock_turn_x[c]] != 0 && teto_stage[brock_serch_y[2] +  brock_turn_y[c]][brock_serch_x[2] + brock_turn_x[c]] != tmppp){
+                    print("can't turn")
+                    return
+                }
+            }
+          print("turn start")
+            for d in 0..<4{
+                       teto_stage[brock_serch_y[d]][brock_serch_x[d]] = 0
+                }
+        
+            for c in 0..<4{
+                teto_stage[brock_serch_y[2] +  brock_turn_y[c]][brock_serch_x[2] + brock_turn_x[c]] = tmppp
+        }
         brock_draw()
     }
     
