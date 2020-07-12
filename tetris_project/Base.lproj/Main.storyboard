@@ -305,12 +305,6 @@
                                     <action selector="right:" destination="JX4-qD-02l" eventType="touchUpInside" id="YzB-9u-6Dr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32a-gR-pFm">
-                                <rect key="frame" x="190.5" y="10" width="33.5" height="32.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PcS-a2-RnI">
                                 <rect key="frame" x="17" y="610" width="380" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -494,12 +488,25 @@
                                     <action selector="turn:" destination="JX4-qD-02l" eventType="touchUpInside" id="Gdi-gE-nMd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fC-56-wKP" userLabel="点数">
+                                <rect key="frame" x="117" y="8" width="165" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32a-gR-pFm">
+                                <rect key="frame" x="40" y="5" width="34" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="32a-gR-pFm" firstAttribute="top" secondItem="hdd-nI-Y3l" secondAttribute="top" constant="10" id="enO-NH-AeJ"/>
                             <constraint firstItem="enX-7B-EuY" firstAttribute="top" secondItem="hdd-nI-Y3l" secondAttribute="top" constant="5" id="hHF-Jz-jEZ"/>
-                            <constraint firstItem="32a-gR-pFm" firstAttribute="centerX" secondItem="rrs-2C-bzk" secondAttribute="centerX" id="nto-GZ-0B7"/>
+                            <constraint firstItem="32a-gR-pFm" firstAttribute="centerX" secondItem="rrs-2C-bzk" secondAttribute="centerX" constant="-155" id="nto-GZ-0B7"/>
                             <constraint firstItem="hdd-nI-Y3l" firstAttribute="trailing" secondItem="enX-7B-EuY" secondAttribute="trailing" constant="5" id="wLC-am-Dec"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hdd-nI-Y3l"/>
@@ -507,6 +514,7 @@
                     <navigationItem key="navigationItem" id="s3D-Pb-1pv"/>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
+                        <outlet property="ScoreLabel" destination="1fC-56-wKP" id="wBi-7q-d7p"/>
                         <outlet property="TimeLabel" destination="32a-gR-pFm" id="5pc-CH-PcB"/>
                         <segue destination="LdG-lg-Y6N" kind="show" identifier="moveModal" id="Fot-m6-ShK"/>
                         <segue destination="JIp-ag-fxd" kind="show" identifier="moveEnd" id="VKT-wg-8Se"/>

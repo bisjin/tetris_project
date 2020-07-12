@@ -14,7 +14,14 @@ class ScoreRankingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //let score = (UIApplication.shared.delegate as! GameViewController).score
+        //上のを簡単にした
+        //let scorefile = UIApplication.shared.delegate as! GameViewController
+        //let score = self.scorefile.score
+        //let score = GameViewController.score
     }
+    
     
     @IBAction func backstart2(_ sender: Any) {
         dismiss(animated: true, completion: nil)

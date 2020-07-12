@@ -35,6 +35,7 @@ var tmp_color = 0;
 class GameViewController: UIViewController,AVAudioPlayerDelegate {
     
     @IBOutlet weak var TimeLabel: UILabel!
+    @IBOutlet weak var ScoreLabel: UILabel!
     
     
     //ブロックを定義
@@ -51,6 +52,10 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     var Time = Timer()
     //制限時間の変数
     var timecounter = 60
+    //得点用の変数
+    var score = 0
+    var scoreLabel:SKLabelNode?
+    var scorelist = [100,200,300,400,800,1000,1500]
     //pauseからの戻りを判定する変数
     var Backfrompause :Bool!
     
@@ -497,7 +502,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
 }
 
 //制限時間
-@objc func timer(){
+    @objc func timer(){
         TimeLabel.text = String(timecounter)
             //制限時間の表示
 
@@ -511,6 +516,11 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
 
         timecounter -= 1
             //制限時間カウント
+        //練習でスコアも加算してみる
+        //score += 10
+        
+        //ScoreLabel.text = String(score)
+
     }
 
 
@@ -601,35 +611,39 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     }
     
     @objc func brock_line_delete(){
-           var line_flg = 0
-           print("delete_line")
-           for y in 0..<20{
-               for x in 0..<12{
-                   if(teto_stage[19 - y][x] >= 10){
-                       line_flg += 1
-                       //print("line_flg\(line_flg)")
-                       if(line_flg == 12){
-                           print("delete_start")
-                           for yy in 0..<19 - y{
-                               for xx in 0..<12{
-                                   teto_stage[19 - y - yy][xx] = teto_stage[19 - y - yy - 1][xx]
-                                   print("y = \(y) x = \(x) yy = \(yy) xx = \(xx) y - yy = \(y-yy)")
-                                   //print("19 - yy = \(19-yy)")
-                               }
-                           }
-                       }
-                       for v in view.subviews{
-                           if let v = v as? UIView, v.tag == 1{
+        var line_flg = 0
+        print("delete_line")
+        for y in 0..<20{
+            for x in 0..<12{
+                if(teto_stage[19 - y][x] >= 10){
+                    line_flg += 1
+                    //print("line_flg\(line_flg)")
+                    if(line_flg == 12){
+                    //点数が増える
+                    score += 10
+                    ScoreLabel.text = String(score)
+                    //ブロックが消える
+                        print("delete_start")
+                        for yy in 0..<19 - y{
+                            for xx in 0..<12{
+                                teto_stage[19 - y - yy][xx] = teto_stage[19 - y - yy - 1][xx]
+                                print("y = \(y) x = \(x) yy = \(yy) xx = \(xx) y - yy = \(y-yy)")
+                                //print("19 - yy = \(19-yy)")
+                            }
+                        }
+                    }
+                    for v in view.subviews{
+                        if let v = v as? UIView, v.tag == 1{
                                v.removeFromSuperview()
-                           }
-                       }
-                   }
-               }
-               line_flg = 0
-           }
+                        }
+                    }
+                }
+            }
+            line_flg = 0
+        }
         print(teto_stage)
-       brock_draw()
-       }
+        brock_draw()
+    }
     
     //左ボタン
     @IBAction func left(_ sender: Any) {
