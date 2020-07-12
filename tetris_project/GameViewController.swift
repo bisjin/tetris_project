@@ -484,7 +484,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                 gTime.invalidate()
                  Time.invalidate()
                 audioPlayerBGM_G.stop()
-                self.performSegue(withIdentifier: "moveEnd", sender: self)
+                self.performSegue(withIdentifier: "moveEnd2", sender: self)
             }
          //0秒になったらタイマーを停止して終了画面へ移動
 
