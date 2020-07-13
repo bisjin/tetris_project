@@ -33,6 +33,8 @@ var brock_turn_x = [0,0,0,0]
 var tmp_color = 0;
 
 class GameViewController: UIViewController,AVAudioPlayerDelegate {
+    //インスタンスを生成
+    static let instance = GameViewController()
     
     @IBOutlet weak var TimeLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
@@ -55,7 +57,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     //得点用の変数
     var score = 0
     var scoreLabel:SKLabelNode?
-    var scorelist = [100,200,300,400,800,1000,1500]
+    var scorelist = [0,0,0,0,0]
     //pauseからの戻りを判定する変数
     var Backfrompause :Bool!
     
@@ -495,7 +497,12 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                 gTime.invalidate()
                 Time.invalidate()
                 audioPlayerBGM_G.stop()
-                self.performSegue(withIdentifier: "moveEnd", sender: self)
+                if(score>=10){
+                    self.performSegue(withIdentifier: "movescore", sender: self)
+                }
+                else{
+                    self.performSegue(withIdentifier: "moveEnd", sender: self)
+                }
             }
         }
     }
@@ -510,7 +517,12 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                 gTime.invalidate()
                  Time.invalidate()
                 audioPlayerBGM_G.stop()
-                self.performSegue(withIdentifier: "moveEnd2", sender: self)
+                if(score>=10){
+                    self.performSegue(withIdentifier: "movescore", sender: self)
+                }
+                else{
+                    self.performSegue(withIdentifier: "moveEnd", sender: self)
+                }
             }
          //0秒になったらタイマーを停止して終了画面へ移動
 

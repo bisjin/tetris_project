@@ -10,6 +10,10 @@ import UIKit
 
 class ScoreRankingViewController: UIViewController {
 
+    let gameviewcontroller = GameViewController.instance
+    
+    @IBOutlet weak var recentscore: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +24,14 @@ class ScoreRankingViewController: UIViewController {
         //let scorefile = UIApplication.shared.delegate as! GameViewController
         //let score = self.scorefile.score
         //let score = GameViewController.score
+        //ランキングに保存する用
+        //ランキングに保存する用
+        print("scorelist:\(gameviewcontroller.scorelist)")
+        
+        print("score:\(gameviewcontroller.score)")
+        recentscore.text = String(gameviewcontroller.score)
+        
+        
     }
     
     

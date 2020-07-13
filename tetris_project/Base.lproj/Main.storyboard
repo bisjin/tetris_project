@@ -95,7 +95,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="agN-Qn-sIV" firstAttribute="centerY" secondItem="o0X-Fe-Hgh" secondAttribute="centerY" constant="-200" id="FGk-Le-pFq"/>
+                            <constraint firstItem="agN-Qn-sIV" firstAttribute="centerY" secondItem="o0X-Fe-Hgh" secondAttribute="centerY" constant="-330" id="FGk-Le-pFq"/>
                             <constraint firstItem="Fmf-g9-K6c" firstAttribute="top" secondItem="1Hf-rq-6RA" secondAttribute="top" constant="20" id="ORm-VA-rro"/>
                             <constraint firstItem="1Hf-rq-6RA" firstAttribute="trailing" secondItem="Fmf-g9-K6c" secondAttribute="trailing" constant="20" id="Q0Y-tO-hKJ"/>
                             <constraint firstItem="agN-Qn-sIV" firstAttribute="centerX" secondItem="o0X-Fe-Hgh" secondAttribute="centerX" id="YRi-vK-Pa6"/>
@@ -103,6 +103,9 @@
                         <viewLayoutGuide key="safeArea" id="1Hf-rq-6RA"/>
                     </view>
                     <navigationItem key="navigationItem" id="dtb-hs-4cb"/>
+                    <connections>
+                        <outlet property="recentscore" destination="KQ4-aZ-7aI" id="4Ub-Cb-xe8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GiZ-63-QKL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
