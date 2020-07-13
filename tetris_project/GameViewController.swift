@@ -497,12 +497,8 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                 gTime.invalidate()
                 Time.invalidate()
                 audioPlayerBGM_G.stop()
-                if(score>=10){
-                    self.performSegue(withIdentifier: "movescore", sender: self)
-                }
-                else{
-                    self.performSegue(withIdentifier: "moveEnd", sender: self)
-                }
+                self.performSegue(withIdentifier: "moveEnd", sender: self)
+                
             }
         }
     }
@@ -517,12 +513,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                 gTime.invalidate()
                  Time.invalidate()
                 audioPlayerBGM_G.stop()
-                if(score>=10){
-                    self.performSegue(withIdentifier: "movescore", sender: self)
-                }
-                else{
-                    self.performSegue(withIdentifier: "moveEnd", sender: self)
-                }
+            self.performSegue(withIdentifier: "moveEnd", sender: self)
             }
          //0秒になったらタイマーを停止して終了画面へ移動
 
