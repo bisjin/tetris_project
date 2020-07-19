@@ -73,33 +73,13 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     
     //ステージ上のマス目12*20
     var teto_stage = [[Int]](repeating:[Int](repeating:0,count: 12),count: 20)
-    /*var masume : [[Int]] = [[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0]]
-     
-    */
-    
     
     
     var bar = [
     [0,1,0,0],
     [0,1,0,0],
     [0,1,0,0],
-    [0,1,0,0],
-    //1
-    [0,0,0,0],
-    [0,0,0,0],
-    [1,1,1,1],
-    [0,0,0,0],
-    //2
-    [0,1,0,0],
-    [0,1,0,0],
-    [0,1,0,0],
-    [0,1,0,0],
-    //3
-    [0,0,0,0],
-    [0,0,0,0],
-    [1,1,1,1],
-    [0,0,0,0]
-    //4
+    [0,1,0,0]
     ]
     
     
@@ -107,23 +87,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
        [0,0,0,0],
        [0,1,0,0],
        [1,1,1,0],
-       [0,0,0,0],
-       //1
-       [0,1,0,0],
-       [0,1,1,0],
-       [0,1,0,0],
-       [0,0,0,0],
-       //2
-       [0,0,0,0],
-       [1,1,1,0],
-       [0,1,0,0],
-       [0,0,0,0],
-       //3
-       [0,0,1,0],
-       [0,1,1,0],
-       [0,0,1,0],
        [0,0,0,0]
-        //4
     ]
        
     
@@ -131,138 +95,40 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         [0,1,0,0],
         [0,1,0,0],
         [0,1,1,0],
-        [0,0,0,0],
-        //1
-        [0,0,0,0],
-        [1,1,1,0],
-        [1,0,0,0],
-        [0,0,0,0],
-        //2
-        [0,1,1,0],
-        [0,0,1,0],
-        [0,0,1,0],
-        [0,0,0,0],
-        //3
-        [0,0,1,0],
-        [1,1,1,0],
-        [0,0,0,0],
         [0,0,0,0]
-        //4
         ]
     
     var Jzi = [
         [0,0,1,0],
         [0,0,1,0],
         [0,1,1,0],
-        [0,0,0,0],
-        //1
-        [0,1,0,0],
-        [0,1,1,1],
-        [0,0,0,0],
-        [0,0,0,0],
-        //2
-        [0,1,1,0],
-        [0,1,0,0],
-        [0,1,0,0],
-        [0,0,0,0],
-        //3
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
         [0,0,0,0]
-        //4
         ]
     
     var Szi = [
         [0,0,0,0],
         [0,1,1,0],
         [1,1,0,0],
-        [0,0,0,0],
-        //1
-        [0,1,0,0],
-        [0,1,1,0],
-        [0,0,1,0],
-        [0,0,0,0],
-        //2
-        [0,0,0,0],
-        [0,1,1,0],
-        [1,1,0,0],
-        [0,0,0,0],
-        //3
-        [0,1,0,0],
-        [0,1,1,0],
-        [0,0,1,0],
         [0,0,0,0]
-        //4
         ]
     
     var Zzi = [
         [0,0,0,0],
         [0,1,1,0],
         [0,0,1,1],
-        [0,0,0,0],
-        //1
-        [0,0,1,0],
-        [0,1,1,0],
-        [0,1,0,0],
-        [0,0,0,0],
-        //2
-        [0,0,0,0],
-        [0,1,1,0],
-        [0,0,1,1],
-        [0,0,0,0],
-        //3
-        [0,0,1,0],
-        [0,1,1,0],
-        [0,1,0,0],
         [0,0,0,0]
-        //4
     ]
     
     var Ozi = [
         [0,0,0,0],
         [0,1,1,0],
         [0,1,1,0],
-        [0,0,0,0],
-        //1
-        [0,0,0,0],
-        [0,1,1,0],
-        [0,1,1,0],
-        [0,0,0,0],
-        //2
-        [0,0,0,0],
-        [0,1,1,0],
-        [0,1,1,0],
-        [0,0,0,0],
-        //3
-        [0,0,0,0],
-        [0,1,1,0],
-        [0,1,1,0],
-        [0,0,0,0],
-        //4
+        [0,0,0,0]
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
-             print(bar)
-             for i in 0..<16{
-                 for n in 0..<4{
-                     print("bar i=\(i)/n=\(n) bar[i][n]=\(bar[i][n])")
-                 }
-             }
-             print("------------")
-             for i in 0..<16{
-                 for n in 0..<4{
-                     print("Tzi i=\(i)/n=\(n) Tzi[i][n]=\(Tzi[i][n])")
-                 }
-             }
-             */
-        
-        //ブロックを生成
-        //生成の基本関数
-        //let brock_Value = Int.random(in: 1 ... 7)
         brock_create(brock_Value: brock_Value)
 
 //重力時間
@@ -382,6 +248,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                 v.removeFromSuperview()
             }
         }
+        
         for_i :for y in 0..<12{
          for x in 0..<20{
             if(teto_stage[x][y] == 1 || teto_stage[x][y] == 10){
@@ -671,13 +538,6 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
         }
-/*
-        for v in view.subviews{
-            if let v = v as? UIView, v.tag == 1{
-                v.removeFromSuperview()
-            }
-        }
- */
         
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]-1] = tmp
@@ -710,13 +570,6 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]] = 0
         }
-/*
-        for v in view.subviews{
-            if let v = v as? UIView, v.tag == 1{
-                v.removeFromSuperview()
-            }
-        }
-*/
         
         for i in 0..<4{
             teto_stage[brock_serch_y[i]][brock_serch_x[i]+1] = tmp
@@ -770,13 +623,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
          
          //minの距離-1分落とす
          //min -= 1
-/*
-        for v in view.subviews{
-            if let v = v as? UIView, v.tag == 1{
-                v.removeFromSuperview()
-            }
-        }
- */
+        
         var tmp_color = 0;
         tmp_color = teto_stage[brock_serch_y[0]][brock_serch_x[0]]
         
@@ -803,7 +650,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         
     }
     
-    @IBAction func turn(_ sender: Any) {
+    @IBAction func turn(_ sender: Any){
         print("push turn button")
         var tmppp = 0
         //回転の原点とりあえず3つ目
@@ -838,7 +685,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         }
         brock_draw()
     }
-    
+
     
     
     @IBAction func pause(_ sender: Any) {
