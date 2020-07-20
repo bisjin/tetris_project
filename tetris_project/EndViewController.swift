@@ -10,15 +10,24 @@ import UIKit
 
 class EndViewController: UIViewController {
 
+    @IBOutlet weak var ScoreLabel: UILabel!
+    
+    var score:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        ScoreLabel.text = score
+        print("ScoreLabel.text \(String(describing: ScoreLabel.text) )")
     }
     
 
     @IBAction func backmenu(_ sender: Any) {
         self.performSegue(withIdentifier: "moveMenufromEnd", sender: self)
+    }
+    @IBAction func savescore(_ sender: Any) {
+        
     }
     //終了画面からメニューへ移動
     

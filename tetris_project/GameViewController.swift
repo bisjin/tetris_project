@@ -38,6 +38,10 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     
     @IBOutlet weak var TimeLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
+    @IBOutlet weak var PlustimeLabel: UILabel!
+    @IBOutlet weak var PlusscoreLabel: UILabel!
+    
+    
     
     
     //ブロックを定義
@@ -54,6 +58,10 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     var Time = Timer()
     //制限時間の変数
     var timecounter = 60
+    //消してからの時間を測る変数
+    var erasetime = 0
+    //消した回数を記録する変数
+    var erasenumber = 0
     //得点用の変数
     var score = 0
     var scoreLabel:SKLabelNode?
@@ -348,7 +356,6 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
             v.removeFromSuperview()
         }
     }
-    
     brock_draw()
     
     counter2 += 1
@@ -357,6 +364,22 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     brock_gravity()
     brock_line_delete()
     
+    if(timecounter == 0){
+        gTime.invalidate()
+         Time.invalidate()
+        audioPlayerBGM_G.stop()
+        //画面遷移による値渡し
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            //segueのIDを確認して特定のsegueのときのみ動作させる
+            if (segue.identifier == "moveEnd2" ){
+                // 2. 遷移先のViewControllerを取得
+                let next = segue.destination as? End2ViewController
+                // 3. １で用意した遷移先の変数に値を渡す
+                next?.score = self.ScoreLabel.text
+            }
+        }
+        self.performSegue(withIdentifier: "moveEnd2", sender: self)
+    }
     for y in 0..<3{
         for x in 0..<11{
             if(teto_stage[y][x] >= 10){
@@ -364,23 +387,48 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                 gTime.invalidate()
                 Time.invalidate()
                 audioPlayerBGM_G.stop()
+                //画面遷移による値渡し
+                func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                    //segueのIDを確認して特定のsegueのときのみ動作させる
+                    if (segue.identifier == "moveEnd") {
+                        // 2. 遷移先のViewControllerを取得
+                        let next = segue.destination as? EndViewController
+                        // 3. １で用意した遷移先の変数に値を渡す
+                        next?.score = self.ScoreLabel.text
+                    }
+                }
+                print("いいいいいいいいいいいいいいいいい")
+                print("scorelabel\(String(describing: ScoreLabel.text))")
                 self.performSegue(withIdentifier: "moveEnd", sender: self)
                 
             }
         }
     }
 }
-
+    
 //制限時間
     @objc func timer(){
         TimeLabel.text = String(timecounter)
+        PlustimeLabel.text = String(erasetime-timecounter)
             //制限時間の表示
 
         if(timecounter == 0){
                 gTime.invalidate()
                  Time.invalidate()
                 audioPlayerBGM_G.stop()
-            self.performSegue(withIdentifier: "moveEnd", sender: self)
+            //画面遷移による値渡し
+            func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                //segueのIDを確認して特定のsegueのときのみ動作させる
+                if segue.identifier == "moveEnd2" {
+                    // 2. 遷移先のViewControllerを取得
+                    let next = segue.destination as? End2ViewController
+                    // 3. １で用意した遷移先の変数に値を渡す
+                    next?.score = self.ScoreLabel.text
+                }
+            }
+            print("いいいいいいいいいいいいいいいいい")
+            print("scorelabel\(String(describing: ScoreLabel.text))")
+            self.performSegue(withIdentifier: "moveEnd2", sender: self)
             }
          //0秒になったらタイマーを停止して終了画面へ移動
 
@@ -398,8 +446,8 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
 @objc func brock_gravity(){
     var bro_y = [0,0,0,0]
     var bro_x = [0,0,0,0]
-    for_i :for var y in 0..<20{
-           for var x in 0..<12{
+    for_i :for y in 0..<20{
+           for x in 0..<12{
 
                //その配列にブロックがある時
                if(teto_stage[19-y][11-x] < 10 && teto_stage[19-y][11-x] != 0){
@@ -411,7 +459,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                        print(teto_stage)
                        brock_fix()
                        br_count = 0
-                        var brock_Value = Int.random(in: 1 ... 7)
+                    let brock_Value = Int.random(in: 1 ... 7)
                         brock_create(brock_Value: brock_Value)
                     return
                    }//それ以外の場合
@@ -489,9 +537,25 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                     line_flg += 1
                     //print("line_flg\(line_flg)")
                     if(line_flg == 12){
-                    //点数が増える
-                    score += 10
-                    ScoreLabel.text = String(score)
+                    //点数(前に消した時からの秒数によって変動)と秒数(+10)が増える
+                        if(erasenumber >= 1){
+                            let erasetime2 = erasetime-timecounter
+                            if(erasetime2 <= 5){
+                                score+=50
+                                PlusscoreLabel.text = "+50"
+                            }
+                            if(erasetime2>=6 && erasetime2<=20){
+                                score+=20
+                                PlusscoreLabel.text = "+20"
+                            }
+                        }else{
+                            score += 10
+                            PlusscoreLabel.text = "+10"
+                        }
+                        ScoreLabel.text = String(score)
+                        erasenumber+=1
+                        timecounter += 10
+                        erasetime = timecounter
                     //ブロックが消える
                         print("delete_start")
                         for yy in 0..<19 - y{
