@@ -57,7 +57,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     //制限時間タイマー用変数
     var Time = Timer()
     //制限時間の変数
-    var timecounter = 60
+    var timecounter = 100
     //消してからの時間を測る変数
     var erasetime = 0
     //消した回数を記録する変数
@@ -73,6 +73,9 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     
     //回転数
     var turn_counter = 0
+    //落下速度
+    var speed = 1.0
+    var speedtime = 0
     
     //ゲームスタート時の時間
     //let StartTime: Date = Date()
@@ -140,7 +143,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         brock_create(brock_Value: brock_Value)
 
 //重力時間
-        gTime = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+        gTime = Timer.scheduledTimer(timeInterval: speed, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
 //制限時間
         Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.timer), userInfo: nil, repeats: true)
 
@@ -166,7 +169,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         //bgmを再開
         Backfrompause = false
 //重力時間(再開用)
-        gTime = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+        gTime = Timer.scheduledTimer(timeInterval: speed, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
 //制限時間(再開用)
         Time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameViewController.timer), userInfo: nil, repeats: true)
        }
@@ -436,8 +439,23 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
             //制限時間カウント
         //練習でスコアも加算してみる
         //score += 10
-        
         //ScoreLabel.text = String(score)
+        
+        
+        //30秒ごとに加速
+        speedtime += 1
+        if speedtime % 30 == 0{
+            if speed < 0.3{
+                
+            }
+            else{
+            speed = speed * 0.9
+            gTime.invalidate()
+            gTime = Timer.scheduledTimer(timeInterval: speed, target: self, selector: #selector(GameViewController.gravity), userInfo: nil, repeats: true)
+            }
+        }
+        
+        
 
     }
 
@@ -557,6 +575,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                         timecounter += 10
                         erasetime = timecounter
                     //ブロックが消える
+                        playSE(name : "break")
                         print("delete_start")
                         for yy in 0..<19 - y{
                             for xx in 0..<12{

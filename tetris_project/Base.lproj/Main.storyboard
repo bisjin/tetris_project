@@ -135,7 +135,7 @@
                                     <action selector="backstart:" destination="xNa-p2-tor" eventType="touchUpInside" id="mEO-aG-D7c"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="①ランダムに落ちてくるブロックを左右ボタンを押して左右に動かそう！" translatesAutoresizingMaskIntoConstraints="NO" id="ZpD-Cf-k1Z">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="①ランダムに落ちてくるブロックを←→ボタンを押して左右に動かそう！" translatesAutoresizingMaskIntoConstraints="NO" id="ZpD-Cf-k1Z">
                                 <rect key="frame" x="57" y="271" width="300" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -146,7 +146,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="②下ボタンで急降下、回転ボタンで回転させよう！" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ok9-lG-3hF">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="②↓ボタンで急降下、　　　　　　　　 　↺ボタンで回転させよう！" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ok9-lG-3hF">
                                 <rect key="frame" x="57" y="391" width="300" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -230,6 +230,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="tapStart:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ULp-vt-fay"/>
+                                    <segue destination="lc3-I8-NkW" kind="show" identifier="moveStartCount" id="uM9-5c-1oE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyG-Sd-PZc">
@@ -272,9 +273,9 @@
                                     <action selector="tapScoreRanking:" destination="BV1-FR-VrT" eventType="touchUpInside" id="V22-qp-RXn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テトリス(仮)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uda-M2-sWB">
-                                <rect key="frame" x="65" y="151" width="284" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TETMIS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uda-M2-sWB">
+                                <rect key="frame" x="113.5" y="151" width="187.5" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -283,15 +284,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~Tetris with mission~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuS-iX-1Cr">
+                                <rect key="frame" x="71" y="203" width="272.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="YyG-Sd-PZc" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="2Np-8K-pa3"/>
                             <constraint firstItem="vTf-7C-t5J" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="-10" id="3zM-cI-Gcs"/>
+                            <constraint firstItem="ZuS-iX-1Cr" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="-200" id="4ye-Jm-ubV"/>
                             <constraint firstItem="fba-ar-nNy" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="150" id="6wQ-Bx-whB"/>
                             <constraint firstItem="fba-ar-nNy" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="ALB-Ke-e0d"/>
                             <constraint firstItem="JFt-7e-O67" firstAttribute="bottom" secondItem="4qk-I5-YsI" secondAttribute="bottom" id="DTS-Dx-nvv"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="JFt-7e-O67" secondAttribute="trailing" constant="5" id="EeC-Pv-zfd"/>
+                            <constraint firstItem="ZuS-iX-1Cr" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="TDd-SF-1mT"/>
                             <constraint firstItem="YyG-Sd-PZc" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="70" id="TJ2-Y5-7ux"/>
                             <constraint firstItem="Uda-M2-sWB" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="TkS-7w-H5o"/>
                             <constraint firstItem="Uda-M2-sWB" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="-240" id="XrF-jV-zpr"/>
@@ -303,12 +312,43 @@
                     <connections>
                         <segue destination="xNa-p2-tor" kind="show" identifier="movehowto" id="t5O-1Y-Cfk"/>
                         <segue destination="4h4-7e-rmd" kind="show" identifier="moveScoreRanking" id="VFv-o7-Sgv"/>
-                        <segue destination="JX4-qD-02l" kind="show" identifier="moveGame" id="Sjz-Ao-ow5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="169.56521739130437" y="126.5625"/>
+        </scene>
+        <!--Start Count View Controller-->
+        <scene sceneID="ZfK-k0-Yz4">
+            <objects>
+                <viewController id="lc3-I8-NkW" customClass="StartCountViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dE3-ZU-Tod">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8k6-Fg-BCB">
+                                <rect key="frame" x="186" y="379" width="42" height="84"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8k6-Fg-BCB" firstAttribute="centerY" secondItem="dE3-ZU-Tod" secondAttribute="centerY" id="XyZ-aR-mt9"/>
+                            <constraint firstItem="8k6-Fg-BCB" firstAttribute="centerX" secondItem="dE3-ZU-Tod" secondAttribute="centerX" id="jyO-M4-5Ak"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4lq-o9-fjA"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hnB-PT-Y9Q"/>
+                    <connections>
+                        <outlet property="CountLabel" destination="8k6-Fg-BCB" id="pig-DP-FOT"/>
+                        <segue destination="JX4-qD-02l" kind="show" identifier="moveGame" id="Amh-Fj-ugJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ueZ-Mb-4ZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1010" y="-599"/>
         </scene>
         <!--Game gamen-->
         <scene sceneID="o05-Z2-Udi">
@@ -318,26 +358,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp0-aq-9GS">
-                                <rect key="frame" x="0.0" y="658" width="122" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp0-aq-9GS">
+                                <rect key="frame" x="8" y="658" width="130" height="100"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="左">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Id0-XS-Wvi"/>
+                                    <constraint firstAttribute="width" constant="130" id="Vcc-SW-bWF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="←">
                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="left:" destination="JX4-qD-02l" eventType="touchUpInside" id="4v0-0F-Wxh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtE-oU-mLV">
-                                <rect key="frame" x="130" y="743" width="132" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtE-oU-mLV">
+                                <rect key="frame" x="142" y="737" width="130" height="100"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="下">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="AJm-st-YC8"/>
+                                    <constraint firstAttribute="width" constant="130" id="x1w-Bi-8iC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="↓">
                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="under:" destination="JX4-qD-02l" eventType="touchUpInside" id="Gli-jt-uur"/>
                                 </connections>
@@ -357,14 +413,22 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWD-QP-HV0">
-                                <rect key="frame" x="277" y="658" width="132" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWD-QP-HV0">
+                                <rect key="frame" x="276" y="658" width="130" height="100"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="右">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="gW4-hc-qEQ"/>
+                                    <constraint firstAttribute="height" constant="100" id="wXi-Ar-TkD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="→">
                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="right:" destination="JX4-qD-02l" eventType="touchUpInside" id="YzB-9u-6Dr"/>
                                 </connections>
@@ -540,18 +604,6 @@
                                     <action selector="pause:" destination="JX4-qD-02l" eventType="touchUpInside" id="7hP-i1-HmK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqO-gZ-QY5">
-                                <rect key="frame" x="297" y="767" width="100" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="回転">
-                                    <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="turn:" destination="JX4-qD-02l" eventType="touchUpInside" id="Gdi-gE-nMd"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fC-56-wKP" userLabel="点数">
                                 <rect key="frame" x="159" y="3" width="103" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -582,13 +634,41 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqO-gZ-QY5">
+                                <rect key="frame" x="15" y="767" width="100" height="65"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="VuJ-ox-5vG"/>
+                                    <constraint firstAttribute="height" constant="65" id="syb-oR-anc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="59"/>
+                                <state key="normal" title="↺">
+                                    <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="turn:" destination="JX4-qD-02l" eventType="touchUpInside" id="Gdi-gE-nMd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JtE-oU-mLV" secondAttribute="bottom" constant="5" id="LlQ-m7-2qx"/>
+                            <constraint firstAttribute="bottom" secondItem="pqO-gZ-QY5" secondAttribute="bottom" constant="10" id="NK6-N0-Q4e"/>
+                            <constraint firstItem="hdd-nI-Y3l" firstAttribute="trailing" secondItem="KWD-QP-HV0" secondAttribute="trailing" constant="8" id="OZh-Vj-rIZ"/>
+                            <constraint firstItem="hdd-nI-Y3l" firstAttribute="bottom" secondItem="KWD-QP-HV0" secondAttribute="bottom" constant="50" id="anD-J4-bYS"/>
                             <constraint firstItem="32a-gR-pFm" firstAttribute="top" secondItem="hdd-nI-Y3l" secondAttribute="top" constant="10" id="enO-NH-AeJ"/>
+                            <constraint firstItem="pqO-gZ-QY5" firstAttribute="leading" secondItem="hdd-nI-Y3l" secondAttribute="leading" constant="15" id="f7H-1E-ngD"/>
                             <constraint firstItem="enX-7B-EuY" firstAttribute="top" secondItem="hdd-nI-Y3l" secondAttribute="top" constant="5" id="hHF-Jz-jEZ"/>
+                            <constraint firstItem="Qp0-aq-9GS" firstAttribute="leading" secondItem="hdd-nI-Y3l" secondAttribute="leading" constant="8" id="iPA-Ly-C1T"/>
                             <constraint firstItem="32a-gR-pFm" firstAttribute="centerX" secondItem="rrs-2C-bzk" secondAttribute="centerX" constant="-155" id="nto-GZ-0B7"/>
+                            <constraint firstItem="JtE-oU-mLV" firstAttribute="centerX" secondItem="rrs-2C-bzk" secondAttribute="centerX" id="uix-pL-tEI"/>
                             <constraint firstItem="hdd-nI-Y3l" firstAttribute="trailing" secondItem="enX-7B-EuY" secondAttribute="trailing" constant="5" id="wLC-am-Dec"/>
+                            <constraint firstItem="hdd-nI-Y3l" firstAttribute="bottom" secondItem="Qp0-aq-9GS" secondAttribute="bottom" constant="50" id="xe8-fA-NO8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hdd-nI-Y3l"/>
                     </view>
@@ -773,11 +853,11 @@
             <objects>
                 <viewController modalPresentationStyle="currentContext" id="LdG-lg-Y6N" customClass="ModalViewController" customModule="tetris_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bb4-qc-lC7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk9-xl-cov">
-                                <rect key="frame" x="77" y="308" width="260" height="280"/>
+                                <rect key="frame" x="77" y="281" width="260" height="280"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyf-ug-lAX">
                                         <rect key="frame" x="40" y="220" width="180" height="40"/>
@@ -825,7 +905,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="535-wG-ans">
-                                <rect key="frame" x="117" y="428" width="180" height="40"/>
+                                <rect key="frame" x="117" y="401" width="180" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="3ZS-B7-rzi"/>
                                     <constraint firstAttribute="height" constant="40" id="aO2-8r-F9O"/>
@@ -836,10 +916,11 @@
                                 </state>
                                 <connections>
                                     <action selector="retry:" destination="LdG-lg-Y6N" eventType="touchUpInside" id="KJ7-S1-Avs"/>
+                                    <segue destination="lc3-I8-NkW" kind="show" identifier="moveretry" id="T0e-rm-dMa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAUSE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdv-K9-LN3">
-                                <rect key="frame" x="148" y="226.5" width="118" height="43"/>
+                                <rect key="frame" x="148" y="199.5" width="118" height="43"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -857,9 +938,6 @@
                         <viewLayoutGuide key="safeArea" id="G6f-7M-hJc"/>
                     </view>
                     <navigationItem key="navigationItem" id="yFj-aK-PNv"/>
-                    <connections>
-                        <segue destination="JX4-qD-02l" kind="show" identifier="moveretry" id="qQF-ws-bQX"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIq-7s-Ycq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -867,9 +945,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Fot-m6-ShK"/>
-        <segue reference="qQF-ws-bQX"/>
-        <segue reference="cuu-b6-xNK"/>
+        <segue reference="T0e-rm-dMa"/>
+        <segue reference="1hI-TI-vRf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -26,7 +26,7 @@ class StartViewController: UIViewController,AVAudioPlayerDelegate {
     @IBAction func tapStart(_ sender: Any){
         playSE(name : "StartSE1")
         audioPlayerBGM_S.stop()
-        self.performSegue(withIdentifier: "moveGame", sender: self)
+        self.performSegue(withIdentifier: "moveStartCount", sender: self)
     }//ゲーム画面へ移動
     
     @IBAction func taphowto(_ sender: Any) {
