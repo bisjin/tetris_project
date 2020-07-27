@@ -20,6 +20,7 @@ import AVFoundation
 var animator : UIDynamicAnimator!
 var audioPlayerBGM_G:AVAudioPlayer!
 var audioPlayerSE_G:AVAudioPlayer!
+var audioPlayerSE_G2:AVAudioPlayer!
 var brock_Value = Int.random(in: 1 ... 7)
 
 var br_count = 0
@@ -40,8 +41,9 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var PlustimeLabel: UILabel!
     @IBOutlet weak var PlusscoreLabel: UILabel!
+    @IBOutlet weak var misson: UILabel!
     
-    
+    //misson.hidden = false
     
     
     //ブロックを定義
@@ -78,6 +80,8 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     //落下速度
     var speed = 1.0
     var speedtime = 0
+    //missonをクリアしたかの判定
+    var mis:Bool = false
     
     //ゲームスタート時の時間
     //let StartTime: Date = Date()
@@ -141,6 +145,8 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        misson.isHidden = true
         
         brock_create(brock_Value: brock_Value)
 
@@ -425,6 +431,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
             let next = segue.destination as? EndViewController
             // 3. １で用意した遷移先の変数に値を渡す
             next?.score = ScoreLabel.text
+            if(mis == true){next?.mis = true}
             //next?.score = self.ScoreLabel.text
             //print("End.Score:\(String(describing: next?.score))")
         }
@@ -434,6 +441,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
             let next = segue.destination as? End2ViewController
             // 3. １で用意した遷移先の変数に値を渡す
             next?.score = ScoreLabel.text
+            if(mis == true){next?.mis = true}
             //next?.score = ScoreLabel.text
             //print("End.Score:\(String(describing: next?.score))")
         }
@@ -536,13 +544,19 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                     //点数(前に消した時からの秒数によって変動)と秒数(+10)が増える
                         if(erasenumber >= 1){
                             let erasetime2 = erasetime-timecounter
+                            if(erasetime2 <= 30){
+                                misson.isHidden = false
+                                playSE2(name : "clear")
+                                mis = true
+                            }
                             if(erasetime2 <= 5){
                                 score+=50
                                 PlusscoreLabel.text = "+50"
                             }
-                            if(erasetime2>=6 && erasetime2<=20){
+                            if(erasetime2>=6 && erasetime2<=30){
                                 score+=20
                                 PlusscoreLabel.text = "+20"
+                                
                             }
                         }else{
                             score += 10
@@ -783,6 +797,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         }
     }
 
+
     func playSE(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
                 print("音源ファイルが見つかりません")
@@ -805,4 +820,26 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         
     
 }
+    func playSE2(name: String) {
+            guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+                    print("音源ファイルが見つかりません")
+                    return
+                }//ModalSE.mp3までのパスを取得
+
+                do {
+                    
+                    audioPlayerSE_G2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                    //パスからBGM再生のURLを作成
+                    // AVAudioPlayerをインスタンス化
+
+                    
+                    audioPlayerSE_G2.play()
+                    // URLを実行
+                    
+                } catch {
+                    //エラーが発生した場合の処理
+                }
+            
+        
+    }
 }

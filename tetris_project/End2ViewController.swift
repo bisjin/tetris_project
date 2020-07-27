@@ -16,15 +16,23 @@ class End2ViewController: UIViewController {
 
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var EnterName: UITextField!
+    @IBOutlet weak var finprint: UILabel!
     
     var score:Any?
     var name:String?
     var gameRecord:[[Any]] = []
     var Record:[[Any]] = [[]]
     
+    
+    var mis:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if(mis == true){
+            finprint.text = "MISSION CLEAR!"
+        }
+        
         // Do any additional setup after loading the view.
         ScoreLabel.text = score as? String
         name = EnterName.text

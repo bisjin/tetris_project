@@ -20,36 +20,43 @@ class ScoreRankingViewController: UIViewController,UITableViewDelegate, UITableV
     @IBOutlet weak var TableView: UITableView!
     
     //一時記録用変数
-    var recscore:String = ""
-    var recname:String?
-    var
+    var recscore:String!
+    var recname:String!
     //配列の要素
-    var arrycount=0
+    var arrycount:Int!
     //記録用配列、スコアと名前
-    var Record:[[String]] = []
+    var Records:[String] = []
+    var Recordn:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        arrycount = Records.count
         
         Recentscore.text = recscore
         print("スコアランキングうううううううううううううう")
-        Record.append([String]())
-        Record.append([recname! as String])
-        let Index = Record.firstIndex(of:[recname! as String])
-        Record[Index!].append(contentsOf: [recscore as String])
-        arrycount = Record.count
+        //Records.append([String]())
+        //Records.append([String]())
+        //Recordn.append(contentsOf: [recname as String])
+        //Records.append(contentsOf: [recscore as String])
+        //let Index = Recordn<Any>.Index(of:[recname! as String])
+        Recordn.append(recname)
+        Records.append(recscore)
+        //Records[Index!].append(contentsOf: [recscore as String])
+        arrycount = Records.count
+        
         //print("Recentscore最近の得点に入ってるやつ::::\(String(describing: Recentscore.text))")
         
         //print("rename 一時名前の保存用変数::::\(String(describing: recname))")
         
-        print("配列の要素数::\(arrycount)")
-        print(Record)
+        //print("配列の要素数::\(String(describing: arrycount))")
+        print("記録\(Records)")
+        print("名前\(Recordn)")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Record.count
+        return Records.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,8 +64,9 @@ class ScoreRankingViewController: UIViewController,UITableViewDelegate, UITableV
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "RCell", for: indexPath)
         
         // セルに表示する値を設定する
-        cell.textLabel!.text = Record[indexPath.row]
-        self.staff_name.text = String((Record[0][1]))
+        cell.textLabel!.text = Recordn[indexPath.row]
+        //cell.textLabel!.text = Records[indexPath.row]
+        //self.staff_name.text = String((Record[0][1]))
         return cell
     }
     

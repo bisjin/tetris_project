@@ -306,6 +306,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="misson:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUK-6X-cym">
+                                <rect key="frame" x="20" y="82" width="374" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30秒以内に二列消せ!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRa-BT-lGv">
+                                <rect key="frame" x="20" y="152" width="374" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -322,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ueZ-Mb-4ZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1010" y="-599"/>
+            <point key="canvasLocation" x="1008.6956521739131" y="-599.33035714285711"/>
         </scene>
         <!--Game gamen-->
         <scene sceneID="o05-Z2-Udi">
@@ -628,6 +642,15 @@
                                     <action selector="turn:" destination="JX4-qD-02l" eventType="touchUpInside" id="Gdi-gE-nMd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="misson clear!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQt-B1-dez">
+                                <rect key="frame" x="261" y="40" width="133" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -653,6 +676,7 @@
                         <outlet property="PlustimeLabel" destination="JW0-3O-gFb" id="anu-1m-HUw"/>
                         <outlet property="ScoreLabel" destination="1fC-56-wKP" id="wBi-7q-d7p"/>
                         <outlet property="TimeLabel" destination="32a-gR-pFm" id="5pc-CH-PcB"/>
+                        <outlet property="misson" destination="SQt-B1-dez" id="QVT-7q-0Yn"/>
                         <segue destination="LdG-lg-Y6N" kind="show" identifier="moveModal" id="Fot-m6-ShK"/>
                         <segue destination="JIp-ag-fxd" kind="show" identifier="moveEnd" id="VKT-wg-8Se"/>
                         <segue destination="iqR-T4-NQa" kind="show" identifier="moveEnd2" id="bst-ZD-DuB"/>
@@ -749,6 +773,7 @@
                     <connections>
                         <outlet property="EnterName" destination="VVM-wt-XYg" id="ubR-mJ-BmF"/>
                         <outlet property="ScoreLabel" destination="IgT-Dn-ckI" id="9cS-qv-w0Y"/>
+                        <outlet property="finprint" destination="cyM-JM-muf" id="hMr-9d-LeV"/>
                         <segue destination="BV1-FR-VrT" kind="show" identifier="moveMenufromEnd" id="cuu-b6-xNK"/>
                         <segue destination="4h4-7e-rmd" kind="show" identifier="toRanking" id="I85-ik-PFZ"/>
                     </connections>
@@ -840,6 +865,7 @@
                     <connections>
                         <outlet property="EnterName" destination="eiH-VW-hIc" id="1Yn-5k-TH3"/>
                         <outlet property="ScoreLabel" destination="4MN-zz-VmT" id="wLb-Pp-n1f"/>
+                        <outlet property="finprint" destination="uB9-Ze-tdu" id="teY-4S-bg8"/>
                         <segue destination="BV1-FR-VrT" kind="show" identifier="moveMenufromEnd2" id="eJP-Sn-iMW"/>
                         <segue destination="4h4-7e-rmd" kind="show" identifier="toRanking2" id="FCc-6Q-wCO"/>
                     </connections>
@@ -946,8 +972,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="uM9-5c-1oE"/>
-        <segue reference="cuu-b6-xNK"/>
-        <segue reference="VFv-o7-Sgv"/>
+        <segue reference="eJP-Sn-iMW"/>
+        <segue reference="FCc-6Q-wCO"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
