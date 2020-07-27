@@ -23,7 +23,6 @@ class End2ViewController: UIViewController {
     var gameRecord:[[Any]] = []
     var Record:[[Any]] = [[]]
     
-    
     var mis:Bool = false
     
     override func viewDidLoad() {

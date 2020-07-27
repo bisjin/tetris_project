@@ -10,9 +10,23 @@ import UIKit
 
 class ScoreViewController: UIViewController {
 
+    static let kiroku = ScoreViewController()
+    
+    //配列の要素
+    var arrycount:Int!
+    //記録用配列、スコアと名前
+    var Records:[String] = []
+    var Recordn:[String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        arrycount = Records.count
+        
+        //Recordn.append(recname)
+        //Records.append(recscore)
+        //Records[Index!].append(contentsOf: [recscore as String])
+        arrycount = Records.count
         // Do any additional setup after loading the view.
     }
     
