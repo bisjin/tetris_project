@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		540E196924CE97440037686C /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540E196824CE97440037686C /* ScoreViewController.swift */; };
-		540E196B24CE9D7A0037686C /* clear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 540E196A24CE9D7A0037686C /* clear.mp3 */; };
+		540E196D24CEA6A40037686C /* clear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 540E196C24CEA6A40037686C /* clear.mp3 */; };
 		5487A202247CE63000563826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5487A201247CE63000563826 /* AppDelegate.swift */; };
 		5487A204247CE63000563826 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5487A203247CE63000563826 /* GameScene.sks */; };
 		5487A206247CE63000563826 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5487A205247CE63000563826 /* Actions.sks */; };
@@ -52,7 +52,7 @@
 
 /* Begin PBXFileReference section */
 		540E196824CE97440037686C /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
-		540E196A24CE9D7A0037686C /* clear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = clear.mp3; path = ../../clear.mp3; sourceTree = "<group>"; };
+		540E196C24CEA6A40037686C /* clear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clear.mp3; sourceTree = "<group>"; };
 		5487A1FE247CE63000563826 /* tetris_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tetris_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5487A201247CE63000563826 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5487A203247CE63000563826 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 				67BB0C8424B9DD01001ED453 /* GameBGM.mp3 */,
 				67530EFC24C7381A00AA6E88 /* break.mp3 */,
 				67BB0C8A24B9E637001ED453 /* ModalSE.mp3 */,
-				540E196A24CE9D7A0037686C /* clear.mp3 */,
+				540E196C24CEA6A40037686C /* clear.mp3 */,
 				5487A201247CE63000563826 /* AppDelegate.swift */,
 				5487A203247CE63000563826 /* GameScene.sks */,
 				5487A205247CE63000563826 /* Actions.sks */,
@@ -287,13 +287,13 @@
 				67BB0C8524B9DD01001ED453 /* GameBGM.mp3 in Resources */,
 				5487A204247CE63000563826 /* GameScene.sks in Resources */,
 				67BB0C7F24B9D276001ED453 /* StartSE1.mp3 in Resources */,
+				540E196D24CEA6A40037686C /* clear.mp3 in Resources */,
 				67530EFD24C7381A00AA6E88 /* break.mp3 in Resources */,
 				5487A20F247CE63600563826 /* Assets.xcassets in Resources */,
 				5487A212247CE63600563826 /* LaunchScreen.storyboard in Resources */,
 				5487A206247CE63000563826 /* Actions.sks in Resources */,
 				67BB0C8B24B9E637001ED453 /* ModalSE.mp3 in Resources */,
 				67BB0C7D24B9D264001ED453 /* StartBGM.mp3 in Resources */,
-				540E196B24CE9D7A0037686C /* clear.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
