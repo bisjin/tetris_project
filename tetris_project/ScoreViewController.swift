@@ -15,8 +15,11 @@ class ScoreViewController: UIViewController {
     //配列の要素
     var arrycount:Int!
     //記録用配列、スコアと名前
-    var Records:[String] = []
+    var Records:[Int] = []
     var Recordn:[String] = []
+    //ハイスコア記録用
+    var highscore = 0
+    var highname = ""
     
     //var practice = "ああああ"
     override func viewDidLoad() {

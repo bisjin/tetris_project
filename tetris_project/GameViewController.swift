@@ -376,15 +376,6 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     brock_gravity()
     brock_line_delete()
     
-    /*if(timecounter == 0){
-        TimeLabel.text = String(timecounter)
-        gTime.invalidate()
-         Time.invalidate()
-        audioPlayerBGM_G.stop()
-        over = true
-        self.performSegue(withIdentifier: "moveEnd", sender: self)
-        //self.performSegue(withIdentifier: "moveEnd2", sender: self)
-    }*/
     for y in 0..<3{
         for x in 0..<11{
             if(teto_stage[y][x] >= 10){
@@ -432,30 +423,17 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
 
     //画面遷移による値渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         print("segueによる値渡し")
+         //print("segueによる値渡し")
         //segueのIDを確認して特定のsegueのときのみ動作させる
-        //ゲームオーバのとき
         if (segue.identifier == "moveEnd") {
             // 2. 遷移先のViewControllerを取得
             let next = segue.destination as? EndViewController
             // 3. １で用意した遷移先の変数に値を渡す
-            next?.score = ScoreLabel.text
+            let scoreltext:String = ScoreLabel.text!
+            next?.score = Int(atoll(scoreltext))
             if(mis == true){next?.mis = true}
             if(over == true){next?.over = true}
-            //next?.score = self.ScoreLabel.text
-            //print("End.Score:\(String(describing: next?.score))")
         }
-        //タイムオーバの時
-        /*if segue.identifier == "moveEnd2" {
-            // 2. 遷移先のViewControllerを取得
-            let next = segue.destination as? End2ViewController
-            // 3. １で用意した遷移先の変数に値を渡す
-            next?.score = ScoreLabel.text
-            if(mis == true){next?.mis = true}
-            if(over == true){next?.over = true}
-            //next?.score = ScoreLabel.text
-            //print("End.Score:\(String(describing: next?.score))")
-        }*/
     }
 
 @objc func brock_gravity(){

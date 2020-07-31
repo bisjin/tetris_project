@@ -18,10 +18,10 @@ class EndViewController: UIViewController {
     @IBOutlet weak var EnterName: UITextField!
     @IBOutlet weak var finprint: UILabel!
     
-    var score:Any?
-    var name:String?
-    var gameRecord:[[Any]] = []
-    var Record:[[Any]] = [[]]
+    var score:Int = 0
+    var name:String = ""
+    //var gameRecord:[[Any]] = []
+    //var Record:[[Any]] = [[]]
     
     var mis:Bool = false
     var over:Bool = false
@@ -37,7 +37,8 @@ class EndViewController: UIViewController {
         }
         
         // Do any additional setup after loading the view.
-        ScoreLabel.text = score as? String
+        let scl: String = String(score)
+        ScoreLabel.text = scl
         name = EnterName.text!
         //print("テキストフィールドに入っている文字列::\(String(describing: EnterName))")
         print("ScoreLabel.text \(String(describing: ScoreLabel.text) )")
@@ -52,7 +53,7 @@ class EndViewController: UIViewController {
     }//終了画面からメニューへ移動
     
     @IBAction func savescore(_ sender: Any) {
-        name = EnterName.text
+        name = EnterName.text!
         print("テキストフィールドに入っている文字列::\(String(describing: EnterName.text))")
         print("ScoreLabel.text \(String(describing: ScoreLabel.text) )")
         print("score.score.score.\(String(describing: score))")
@@ -67,7 +68,9 @@ class EndViewController: UIViewController {
             // 2. 遷移先のViewControllerを取得
             let next = segue.destination as? ScoreRankingViewController
             // 3. １で用意した遷移先の変数に値を渡す
-            next?.recscore = (self.score as? String)!
+            next?.recscore = self.score
+            print("渡すはずの値:\(String(describing: score))")
+            print("渡した値:\(String(describing: next?.recscore))")
             print("入力した名前:::\(String(describing: name))")
             next?.recname = self.name
             //print("End.Score:\(String(describing: next?.score))")
