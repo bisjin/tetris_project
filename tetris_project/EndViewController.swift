@@ -32,8 +32,10 @@ class EndViewController: UIViewController {
         if(mis == true){
             finprint.text = "MISSION CLEAR!"
         }
-        if(over == true){
-            finprint.text = "TIME UP"
+        else{
+            if(over == true){
+                finprint.text = "TIME UP"
+            }
         }
         
         // Do any additional setup after loading the view.

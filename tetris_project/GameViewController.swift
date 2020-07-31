@@ -394,7 +394,12 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     //制限時間
     @objc func timer(){
         TimeLabel.text = String(timecounter)
-        PlustimeLabel.text = String(erasetime-timecounter)
+        if(erasetime == 0){
+            PlustimeLabel.text = "_"
+        }
+        else{
+            PlustimeLabel.text = String(erasetime-timecounter)
+        }
         //制限時間の表示
         if(timecounter == 0){
             gTime.invalidate()

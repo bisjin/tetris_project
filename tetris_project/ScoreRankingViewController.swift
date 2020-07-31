@@ -41,11 +41,13 @@ class ScoreRankingViewController: UIViewController,UITableViewDelegate, UITableV
         
         //print("スコアランキングうううううううううううううう")
         //print("recscore::\(String(describing: recscore))")
-        kiroku.Recordn.append(recname)
-        kiroku.Records.append(recscore)
-        if(kiroku.highscore < recscore){
-            kiroku.highscore = recscore
-            kiroku.highname = recname
+        if(recname != "none"){
+            kiroku.Recordn.append(recname)
+            kiroku.Records.append(recscore)
+            if(kiroku.highscore < recscore){
+                kiroku.highscore = recscore
+                kiroku.highname = recname
+            }
         }
         
         let high: String = String(kiroku.highscore)
