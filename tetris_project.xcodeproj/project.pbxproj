@@ -18,6 +18,9 @@
 		5487A212247CE63600563826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5487A210247CE63600563826 /* LaunchScreen.storyboard */; };
 		5487A21D247CE63800563826 /* tetris_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5487A21C247CE63800563826 /* tetris_projectTests.swift */; };
 		5487A228247CE63900563826 /* tetris_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5487A227247CE63900563826 /* tetris_projectUITests.swift */; };
+		67163C6024D3E416003449BB /* Gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67163C5F24D3E416003449BB /* Gameover.mp3 */; };
+		67163C6224D3E615003449BB /* Countdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67163C6124D3E615003449BB /* Countdown.mp3 */; };
+		67163C6424D3E718003449BB /* Countdown2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67163C6324D3E717003449BB /* Countdown2.mp3 */; };
 		67530EFB24C5775000AA6E88 /* StartCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67530EFA24C5775000AA6E88 /* StartCountViewController.swift */; };
 		67530EFD24C7381A00AA6E88 /* break.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 67530EFC24C7381A00AA6E88 /* break.mp3 */; };
 		67962CAD249519B0005616BB /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67962CAC249519B0005616BB /* ModalViewController.swift */; };
@@ -67,6 +70,9 @@
 		5487A223247CE63900563826 /* tetris_projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tetris_projectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5487A227247CE63900563826 /* tetris_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tetris_projectUITests.swift; sourceTree = "<group>"; };
 		5487A229247CE63900563826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67163C5F24D3E416003449BB /* Gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gameover.mp3; sourceTree = "<group>"; };
+		67163C6124D3E615003449BB /* Countdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Countdown.mp3; sourceTree = "<group>"; };
+		67163C6324D3E717003449BB /* Countdown2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Countdown2.mp3; sourceTree = "<group>"; };
 		67530EFA24C5775000AA6E88 /* StartCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCountViewController.swift; sourceTree = "<group>"; };
 		67530EFC24C7381A00AA6E88 /* break.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = break.mp3; sourceTree = "<group>"; };
 		67962CAC249519B0005616BB /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -130,11 +136,14 @@
 			isa = PBXGroup;
 			children = (
 				F4D2F59824A7FF43003E2F56 /* GameViewController.swift */,
+				67163C6124D3E615003449BB /* Countdown.mp3 */,
+				67163C6324D3E717003449BB /* Countdown2.mp3 */,
 				67BB0C7C24B9D264001ED453 /* StartBGM.mp3 */,
 				67BB0C7E24B9D276001ED453 /* StartSE1.mp3 */,
 				67BB0C8424B9DD01001ED453 /* GameBGM.mp3 */,
 				67530EFC24C7381A00AA6E88 /* break.mp3 */,
 				67BB0C8A24B9E637001ED453 /* ModalSE.mp3 */,
+				67163C5F24D3E416003449BB /* Gameover.mp3 */,
 				540E196C24CEA6A40037686C /* clear.mp3 */,
 				5487A201247CE63000563826 /* AppDelegate.swift */,
 				5487A203247CE63000563826 /* GameScene.sks */,
@@ -282,12 +291,15 @@
 			files = (
 				5487A20D247CE63000563826 /* Main.storyboard in Resources */,
 				67BB0C8524B9DD01001ED453 /* GameBGM.mp3 in Resources */,
+				67163C6224D3E615003449BB /* Countdown.mp3 in Resources */,
 				5487A204247CE63000563826 /* GameScene.sks in Resources */,
 				67BB0C7F24B9D276001ED453 /* StartSE1.mp3 in Resources */,
 				540E196D24CEA6A40037686C /* clear.mp3 in Resources */,
 				67530EFD24C7381A00AA6E88 /* break.mp3 in Resources */,
+				67163C6424D3E718003449BB /* Countdown2.mp3 in Resources */,
 				5487A20F247CE63600563826 /* Assets.xcassets in Resources */,
 				5487A212247CE63600563826 /* LaunchScreen.storyboard in Resources */,
+				67163C6024D3E416003449BB /* Gameover.mp3 in Resources */,
 				5487A206247CE63000563826 /* Actions.sks in Resources */,
 				67BB0C8B24B9E637001ED453 /* ModalSE.mp3 in Resources */,
 				67BB0C7D24B9D264001ED453 /* StartBGM.mp3 in Resources */,

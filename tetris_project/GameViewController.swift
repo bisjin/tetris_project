@@ -393,6 +393,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
                 gTime.invalidate()
                 Time.invalidate()
                 audioPlayerBGM_G.stop()
+                playSE(name: "Gameover")
                 self.performSegue(withIdentifier: "moveEnd", sender: self)
             }
         }
@@ -408,6 +409,7 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
             gTime.invalidate()
             Time.invalidate()
             audioPlayerBGM_G.stop()
+            playSE(name: "Gameover")
             over = true
             self.performSegue(withIdentifier: "moveEnd", sender: self)
             }
