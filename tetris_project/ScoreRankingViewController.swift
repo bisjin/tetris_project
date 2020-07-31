@@ -14,7 +14,8 @@ import AVFoundation
 
 class ScoreRankingViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
-    let gameviewcontroller = GameViewController.instance
+    let kiroku = ScoreViewController.instance
+
     
     @IBOutlet weak var Recentscore: UILabel!
     @IBOutlet weak var TableView: UITableView!
@@ -25,38 +26,30 @@ class ScoreRankingViewController: UIViewController,UITableViewDelegate, UITableV
     //配列の要素
     var arrycount:Int!
     //記録用配列、スコアと名前
-    var Records:[String] = []
-    var Recordn:[String] = []
+    //var Records:[String] = []
+    //var Recordn:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        arrycount = Records.count
+        arrycount = kiroku.Records.count
+        
+        //print(kiroku.practice)
         
         Recentscore.text = recscore
         print("スコアランキングうううううううううううううう")
-        //Records.append([String]())
-        //Records.append([String]())
-        //Recordn.append(contentsOf: [recname as String])
-        //Records.append(contentsOf: [recscore as String])
-        //let Index = Recordn<Any>.Index(of:[recname! as String])
-        Recordn.append(recname)
-        Records.append(recscore)
-        //Records[Index!].append(contentsOf: [recscore as String])
-        arrycount = Records.count
         
-        //print("Recentscore最近の得点に入ってるやつ::::\(String(describing: Recentscore.text))")
+        kiroku.Recordn.append(recname)
+        kiroku.Records.append(recscore)
+        arrycount = kiroku.Records.count
         
-        //print("rename 一時名前の保存用変数::::\(String(describing: recname))")
-        
-        //print("配列の要素数::\(String(describing: arrycount))")
-        print("記録\(Records)")
-        print("名前\(Recordn)")
+        print("記録\(kiroku.Records)")
+        print("名前\(kiroku.Recordn)")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Records.count
+        return kiroku.Recordn.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,10 +57,23 @@ class ScoreRankingViewController: UIViewController,UITableViewDelegate, UITableV
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "RCell", for: indexPath)
         
         // セルに表示する値を設定する
-        cell.textLabel!.text = Recordn[indexPath.row]
-        //cell.textLabel!.text = Records[indexPath.row]
+        cell.textLabel!.text = kiroku.Recordn[indexPath.row]
         //self.staff_name.text = String((Record[0][1]))
         return cell
+    }
+    
+    func tableView2(_ tableView2: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return kiroku.Records.count
+    }
+    
+    func tableView2(_ tableView2: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // セルを取得する
+        let cell2: UITableViewCell = tableView2.dequeueReusableCell(withIdentifier: "RCell2", for: indexPath)
+        
+        // セルに表示する値を設定する
+        cell2.textLabel!.text = kiroku.Records[indexPath.row]
+        //self.staff_name.text = String((Record[0][1]))
+        return cell2
     }
     
     

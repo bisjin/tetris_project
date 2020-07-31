@@ -24,12 +24,16 @@ class EndViewController: UIViewController {
     var Record:[[Any]] = [[]]
     
     var mis:Bool = false
+    var over:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if(mis == true){
             finprint.text = "MISSION CLEAR!"
+        }
+        if(over == true){
+            finprint.text = "TIME UP"
         }
         
         // Do any additional setup after loading the view.

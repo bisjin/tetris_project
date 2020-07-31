@@ -10,7 +10,7 @@ import UIKit
 
 class ScoreViewController: UIViewController {
 
-    static let kiroku = ScoreViewController()
+    static let instance = ScoreViewController()
     
     //配列の要素
     var arrycount:Int!
@@ -18,6 +18,7 @@ class ScoreViewController: UIViewController {
     var Records:[String] = []
     var Recordn:[String] = []
     
+    //var practice = "ああああ"
     override func viewDidLoad() {
         super.viewDidLoad()
 

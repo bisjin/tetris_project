@@ -82,6 +82,8 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     var speedtime = 0
     //missonをクリアしたかの判定
     var mis:Bool = false
+    //gameover(false) or timeover(true)
+    var over:Bool = false
     
     //ゲームスタート時の時間
     //let StartTime: Date = Date()
@@ -374,16 +376,20 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
     brock_gravity()
     brock_line_delete()
     
-    if(timecounter == 0){
+    /*if(timecounter == 0){
+        TimeLabel.text = String(timecounter)
         gTime.invalidate()
          Time.invalidate()
         audioPlayerBGM_G.stop()
-        self.performSegue(withIdentifier: "moveEnd2", sender: self)
-    }
+        over = true
+        self.performSegue(withIdentifier: "moveEnd", sender: self)
+        //self.performSegue(withIdentifier: "moveEnd2", sender: self)
+    }*/
     for y in 0..<3{
         for x in 0..<11{
             if(teto_stage[y][x] >= 10){
                 print("Game Over")
+                over = false
                 gTime.invalidate()
                 Time.invalidate()
                 audioPlayerBGM_G.stop()
@@ -399,10 +405,11 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
         PlustimeLabel.text = String(erasetime-timecounter)
         //制限時間の表示
         if(timecounter == 0){
-                gTime.invalidate()
-                 Time.invalidate()
-                audioPlayerBGM_G.stop()
-            self.performSegue(withIdentifier: "moveEnd2", sender: self)
+            gTime.invalidate()
+            Time.invalidate()
+            audioPlayerBGM_G.stop()
+            over = true
+            self.performSegue(withIdentifier: "moveEnd", sender: self)
             }
          //0秒になったらタイマーを停止して終了画面へ移動
 
@@ -432,19 +439,21 @@ class GameViewController: UIViewController,AVAudioPlayerDelegate {
             // 3. １で用意した遷移先の変数に値を渡す
             next?.score = ScoreLabel.text
             if(mis == true){next?.mis = true}
+            if(over == true){next?.over = true}
             //next?.score = self.ScoreLabel.text
             //print("End.Score:\(String(describing: next?.score))")
         }
         //タイムオーバの時
-        if segue.identifier == "moveEnd2" {
+        /*if segue.identifier == "moveEnd2" {
             // 2. 遷移先のViewControllerを取得
             let next = segue.destination as? End2ViewController
             // 3. １で用意した遷移先の変数に値を渡す
             next?.score = ScoreLabel.text
             if(mis == true){next?.mis = true}
+            if(over == true){next?.over = true}
             //next?.score = ScoreLabel.text
             //print("End.Score:\(String(describing: next?.score))")
-        }
+        }*/
     }
 
 @objc func brock_gravity(){
